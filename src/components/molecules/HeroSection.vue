@@ -73,7 +73,7 @@
 
     <!-- Trusted Section -->
         <section
-      class="pt-5 pr-3 pb-5 pl-3 flex lg:flex-row flex-col items-center justify-between relative gap-8"
+      class="p-6 flex lg:flex-row flex-col items-center justify-between relative gap-8"
     >
       <div
         class="text-[#040f56] text-left font-['Montserrat-Regular',_sans-serif] text-[22px] leading-[26.4px] font-normal relative w-[300px]"
