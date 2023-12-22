@@ -4,7 +4,7 @@ import logo from "../../assets/images/SAHARSH-SOFTWARE-3.png";
 
 <template>
     <div
-      class="bg-[#0A102D] flex flex-col gap-2.5 items-center justify-center p-6 relative"
+      class="bg-primary-color flex flex-col gap-2.5 items-center justify-center p-6 relative"
     >
       <div
         class="flex lg:flex-row flex-col gap-2.5 items-start justify-start shrink-0 w-[90%] relative"
@@ -194,7 +194,7 @@ import logo from "../../assets/images/SAHARSH-SOFTWARE-3.png";
         </div>
       </div>
     </div>
-  <div class="bg-[#0A102D] flex flex-col items-center justify-between relative">
+  <div class="bg-primary-color flex flex-col items-center justify-between relative">
     <div class="flex flex-row gap-2.5 items-center justify-center self-stretch shrink-0 h-24 relative">
       <div
         class="text-[#7a7a7a] text-left font-['DmSans-Regular',_sans-serif] text-sm leading-[25.6px] font-normal relative">

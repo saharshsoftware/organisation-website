@@ -2,3 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-primary: #0A102D;
+  --color-secondary: #9561e2;
+  --color-success: #38a169;
+  --color-warning: #e37400;
+  --color-danger: #e3342f;
+  /* Add more color variables as needed */
+}

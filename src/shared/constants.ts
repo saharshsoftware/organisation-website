@@ -13,19 +13,10 @@ export const NAV_LINK = [
   },
   {
     path: "/",
-    label: "Case Study",
-    id: 3,
-  },
-  {
-    path: "/",
     label: "Blog",
     id: 4,
   },
-  {
-    path: "/",
-    label: "Company",
-    id: 5,
-  },
+
 ];
 
 export const BLOG_DATA = [

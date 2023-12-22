@@ -1,6 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import HeroSectionSlot from '../components/atoms/HeroSectionSlot.vue';
+</script>
 <template>
-  <div>Contact Us</div>
+   <HeroSectionSlot>
+    
+      <div class="text-white">Contact Us</div>
+    
+   </HeroSectionSlot>
 </template>
 
 <style scoped></style>
