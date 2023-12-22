@@ -12,9 +12,9 @@ export const NAV_LINK = [
     id: 2,
   },
   {
-    path: "/",
+    path: "/blogs",
     label: "Blog",
-    id: 4,
+    id: 3,
   },
 
 ];
