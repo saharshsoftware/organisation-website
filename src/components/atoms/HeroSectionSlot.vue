@@ -2,7 +2,7 @@
 
 </script>
 <template>
-  <section class="bg-primary-color md:px-24 px-6 md:py-32 py-9  relative">
+  <section class="md:px-24 px-6 md:py-32 py-9  relative bg-primary-color">
     <slot>
 
     </slot>
