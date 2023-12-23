@@ -29,3 +29,7 @@ input:focus-visible, textarea:focus-visible {
 .show_bg_2 {
   @apply bg-[linear-gradient(to_right,var(--color-banner-to),var(--color-banner-from)),url('assets/images/digital-professional.jpg')] h-[400px] bg-cover text-[white] p-5;
 }
+
+.common-padding {
+  @apply md:px-24 px-6
+}

@@ -1,13 +1,8 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 <template>
-  <section class="md:px-24 px-6 md:py-32 py-9  relative bg-primary-color">
-    <slot>
-
-    </slot>
+  <section class="common-padding md:py-32 py-9 relative bg-primary-color">
+    <slot class="w-full"> </slot>
   </section>
 </template>
-
 
 <style scoped></style>

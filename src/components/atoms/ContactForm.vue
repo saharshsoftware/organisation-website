@@ -1,17 +1,13 @@
 <script setup lang="ts">
 import InputComponent from "./InputComponent.vue";
 
-function updateUsername(e: any) {
-  // Update user.name with the new value
-  console.log(e);
-}
 </script>
 <template>
-  <div class="flex flex-col gap-[30px] items-start justify-start relative md:w-[60%] w-full mx-auto">
+  <div class="flex flex-col gap-[30px] items-start justify-start relative md:w-[70%] w-full mx-auto">
     <div
       class="text-[#000000] text-left font-['DmSans-Regular',_sans-serif] text-[22px] leading-[30px] font-normal relative self-stretch"
     >
-      Thank you for your interest in Jalan Technologies. Please fill out the
+      Thank you for your interest in Saharsh Software. Please fill out the
       form below to ask a question or report a technical problem..
     </div>
     <div

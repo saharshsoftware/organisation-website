@@ -3,7 +3,7 @@
   </script>
 <template>
     <section
-      class="bg-[#0a102d] md:px-24 px-6 md:py-36 py-9  relative"
+      class="bg-[#0a102d] common-padding md:py-36 py-9  relative"
     >
       <div
         class="flex flex-col gap-[33px] items-start justify-center "

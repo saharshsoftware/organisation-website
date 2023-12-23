@@ -3,7 +3,7 @@
       <div class="flex flex-col gap-[33px] items-start justify-center ">
         <div class="pr-[9px] pl-[9px] flex flex-row gap-2.5 items-center justify-center shrink-0 relative">
           <div
-            class="text-[#ffffff] text-left font-['Montserrat-Regular',_sans-serif] text-5xl leading-[45px] font-normal relative self-stretch flex-1 w-[48vw]">
+            class="text-[#ffffff] text-left font-['Montserrat-Regular',_sans-serif] text-5xl font-normal relative self-stretch flex-1 md:w-[48vw] ">
             We design and engineer the most user centric software products
           </div>
         </div>
