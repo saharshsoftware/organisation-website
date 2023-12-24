@@ -3,7 +3,7 @@ import { BLOG_DATA } from "../../shared/constants";
 </script>
 <template>
   <div
-    class="flex flex-col gap-[50px] items-start justify-start relative p-6 auto"
+    class="flex flex-col gap-[50px] items-start justify-start relative common-padding py-6 auto"
   >
     <div
       class="rounded-[30px] flex lg:flex-row flex-col items-center justify-between shrink-0 w-full relative gap-2"

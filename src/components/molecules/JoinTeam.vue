@@ -26,7 +26,7 @@ import logo from "../../assets/images/digital-professional.jpg"
             <div
               class="text-[#414562] text-left font-['DmSans-Regular',_sans-serif] text-[25px] leading-[38px] font-normal relative self-stretch"
             >
-              Life at Jalan
+              Life at Saharsh Software
             </div>
             <div
               class="text-[#414562] text-left font-['DmSans-Regular',_sans-serif] text-[25px] leading-[38px] font-normal relative self-stretch"
@@ -34,19 +34,22 @@ import logo from "../../assets/images/digital-professional.jpg"
               “Good place to work !! Flexible work hours and good team to motivate
               and push you towards quality”
             </div>
-            <div
+            <div class="flex justify-between items-center w-full">
+
+              <div
               class="text-[#414562] text-left font-['DmSans-Regular',_sans-serif] text-xl leading-[30px] font-normal relative self-stretch"
-            >
+              >
               Software Engineer
             </div>
             <div
               class="bg-[#f0f0f0] flex flex-row gap-2.5 items-center justify-start self-stretch shrink-0 relative overflow-hidden"
             >
-              <div
-                class="text-[#237ac4] text-center font-['Montserrat-Regular',_sans-serif] text-lg leading-[18px] font-normal relative"
-              >
-                Careers
-              </div>
+            <div
+            class="text-[#237ac4] text-center font-['Montserrat-Regular',_sans-serif] text-lg leading-[18px] font-normal relative"
+            >
+            Careers
+          </div>
+          </div>
             </div>
           </div>
         </div>

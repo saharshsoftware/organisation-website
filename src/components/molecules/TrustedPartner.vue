@@ -1,6 +1,6 @@
 <template>
   <!-- Trusted Section -->
-  <section class="p-6 flex lg:flex-row flex-col items-center justify-between relative gap-8">
+  <section class="common-padding py-6 flex lg:flex-row flex-col items-center justify-between relative gap-8">
     <div
       class="text-[#040f56] text-left font-['Montserrat-Regular',_sans-serif] text-[22px] leading-[26.4px] font-normal relative w-[300px]">
       Trusted by Executives &amp; Entrepreneurs from
