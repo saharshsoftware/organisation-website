@@ -3,7 +3,7 @@ import InputComponent from "./InputComponent.vue";
 
 </script>
 <template>
-  <div class="flex flex-col gap-[30px] items-start justify-start relative md:w-[70%] w-full mx-auto">
+  <div class="flex flex-col gap-[30px] items-start justify-start relative md:w-[70%] w-full mx-auto animate__animated animate__fadeInUp">
     <div
       class="text-[#000000] text-left font-['DmSans-Regular',_sans-serif] text-[22px] leading-[30px] font-normal relative self-stretch"
     >

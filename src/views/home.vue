@@ -1,6 +1,6 @@
 <template>
     <HeroSectionSlot>
-      <div class="flex flex-col gap-[33px] items-start justify-center ">
+      <div class="flex flex-col gap-[33px] items-start justify-center animate__animated animate__slideInLeft">
         <div class="pr-[9px] pl-[9px] flex flex-row gap-2.5 items-center justify-center shrink-0 relative">
           <div
             class="text-[#ffffff] text-left font-['Montserrat-Regular',_sans-serif] text-5xl font-normal relative self-stretch flex-1 md:w-[48vw] ">

@@ -6,15 +6,15 @@ import { BLOG_DATA } from "../../shared/constants";
     class="flex flex-col gap-[50px] items-start justify-start relative common-padding py-6 auto"
   >
     <div
-      class="rounded-[30px] flex lg:flex-row flex-col items-center justify-between shrink-0 w-full relative gap-2"
+      class="rounded-[30px] flex lg:flex-row flex-col items-center justify-between shrink-0 w-full relative gap-2 "
     >
       <div
-        class="text-[#0e163d] text-left font-['DmSans-Regular',_sans-serif] text-5xl leading-[54px] font-bold relative"
+        class="text-[#0e163d] text-left font-['DmSans-Regular',_sans-serif] text-5xl leading-[54px] font-bold relative animate__animated animate__fadeInLeft"
       >
         Our Latest Blogs
       </div>
       <div
-        class="border-solid border-[#237ac4] border-2 px-8 py-4 flex flex-row gap-2.5 items-center justify-center shrink-0 relative overflow-hidden "
+        class="border-solid border-[#237ac4] border-2 px-8 py-4 flex flex-row gap-2.5 items-center justify-center shrink-0 relative overflow-hidden animate__animated animate__fadeInLeft"
       >
         <div
           class="text-[#0e163d] text-center font-['DmSans-Regular',_sans-serif] text-base leading-[22px] font-bold relative"
@@ -25,7 +25,7 @@ import { BLOG_DATA } from "../../shared/constants";
     </div>
     
     <div
-      class="flex lg:flex-row flex-col gap-5 items-center justify-start self-stretch shrink-0 relative"
+      class="flex lg:flex-row flex-col gap-5 items-center justify-start self-stretch shrink-0 relative animate__animated animate__fadeInUp"
     >
       <div
         class="flex flex-col gap-2 items-start justify-start self-stretch flex-1 relative overflow-hidden "

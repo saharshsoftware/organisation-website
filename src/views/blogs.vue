@@ -8,8 +8,8 @@ const breadcrumbs = [
 ];
 </script>
 <template>
-  <section class="common-padding py-9 relative bg-primary-color">
-    <div class="text-white flex flex-col items-start justify-between gap-5">
+  <section class="common-padding py-9 relative bg-primary-color ">
+    <div class="text-white flex flex-col items-start justify-between gap-5 animate__animated animate__slideInLeft">
       <h2 class="text-xl">
 
         Blogs

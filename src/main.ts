@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import { VueQueryPlugin } from '@tanstack/vue-query'
-
+import 'animate.css';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import './style.css'
 import router from './router'
