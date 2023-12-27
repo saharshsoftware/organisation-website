@@ -1,4 +1,17 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { toRefs } from "vue";
+import { BASE_URL } from "../../shared/api";
+
+const props = defineProps({
+  author: String,
+  content: String,
+  image_url: String,
+});
+
+const { author, content, image_url } = toRefs(props);
+const profile_image = BASE_URL + image_url?.value
+
+</script>
 
 <template>
   <section class="bg-white">
@@ -17,21 +30,19 @@
         </svg>
         <blockquote>
           <p class="text-lg font-medium text-gray-900">
-            "Flowbite is just awesome. It contains tons of predesigned
-            components and pages starting from login screen to complex
-            dashboard. Perfect choice for your next SaaS application."
+            "{{ content }}"
           </p>
         </blockquote>
         <figcaption class="mt-6 flex items-center justify-center space-x-3">
+          <!-- src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png" -->
           <img
             class="h-6 w-6 rounded-full"
-            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png"
+            :src="profile_image"
             alt="profile picture"
           />
           <div class="flex items-center divide-x-2 divide-gray-500">
-            <div class="pr-3 font-medium text-gray-900">Micheal Gough</div>
-            <div class="text pl-3">CEO at Google</div>
-          </div>
+            <div class="pr-3 font-medium text-gray-900">{{ author }}</div>
+         </div>
         </figcaption>
       </figure>
     </div>

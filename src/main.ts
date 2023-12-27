@@ -1,4 +1,6 @@
 import { createApp } from 'vue'
+import { VueQueryPlugin } from '@tanstack/vue-query'
+
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import './style.css'
 import router from './router'
@@ -11,5 +13,6 @@ const app = createApp(App)
 // Register the FontAwesome component globally
 app.component('font-awesome-icon', FontAwesomeIcon)
 // app.component('CustomCursor', CustomCursorVue) // Global registration
+app.use(VueQueryPlugin)
 app.use(router)
 app.mount('#app')
