@@ -11,13 +11,17 @@ const route = useRoute();
 const toggleMobileView = () => {
   isMobileViewVisible.value = !isMobileViewVisible.value;
 };
+
+const closetoggle = () => {
+  isMobileViewVisible.value = false;
+};
 </script>
 <template>
   <div class="bg-primary-color common-padding">
     <div
       class="flex flex-row items-center justify-between relative w-full h-[116px]"
     >
-      <RouterLink class="cursor-pointer" to="/">
+      <RouterLink class="cursor-pointer" to="/" @click="closetoggle">
         <img class="shrink-0 h-[46px] relative" :src="logo" alt="image-add" />
       </RouterLink>
       <div

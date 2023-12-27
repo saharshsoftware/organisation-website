@@ -1,6 +1,6 @@
 <script setup lang="ts"></script>
 <template>
-  <section class="common-padding md:py-32 py-9 relative bg-primary-color">
+  <section class="common-padding md:py-24 py-9 relative bg-primary-color">
     <slot class="w-full"> </slot>
   </section>
 </template>

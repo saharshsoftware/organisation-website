@@ -31,5 +31,12 @@ input:focus-visible, textarea:focus-visible {
 }
 
 .common-padding {
-  @apply md:px-24 px-6
+  @apply md:px-12 px-6
+}
+
+.my-card:hover {
+  transition: transform 1s;
+  transform: scale(1.1);
+  cursor: zoom-in;
+  background: radial-gradient(200% 188% at top, white 50%, var(--color-primary) 50.1%);
 }

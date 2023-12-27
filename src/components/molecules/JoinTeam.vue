@@ -4,7 +4,7 @@ import logo from "../../assets/images/digital-professional.jpg"
 </script>
 <template>
     <div
-      class="flex flex-col items-center justify-between self-stretch shrink-0  relative"
+      class="flex flex-col items-center justify-between self-stretch shrink-0  relative gap-2.5"
     >
       <div
         class="text-[#414562] text-center font-['DmSans-Regular',_sans-serif] text-[25px] leading-[38px] font-normal relative"
@@ -44,11 +44,6 @@ import logo from "../../assets/images/digital-professional.jpg"
             <div
               class="bg-[#f0f0f0] flex flex-row gap-2.5 items-center justify-start self-stretch shrink-0 relative overflow-hidden"
             >
-            <div
-            class="text-[#237ac4] text-center font-['Montserrat-Regular',_sans-serif] text-lg leading-[18px] font-normal relative"
-            >
-            Careers
-          </div>
           </div>
             </div>
           </div>

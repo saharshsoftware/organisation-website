@@ -13,7 +13,7 @@ import { faEnvelope, faLocationDot, faPhone } from "@fortawesome/free-solid-svg-
     class="bg-primary-color flex flex-col gap-2.5 items-center justify-center common-padding py-6 relative"
   >
     <div
-      class="flex lg:flex-row flex-col gap-2.5 items-start justify-start shrink-0 relative"
+      class="w-full flex lg:flex-row flex-col gap-2.5 items-start justify-start shrink-0 relative"
     >
       <div
         class="flex flex-col gap-2.5 items-start justify-start self-stretch flex-1 relative"

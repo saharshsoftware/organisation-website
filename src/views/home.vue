@@ -47,6 +47,7 @@
       </div>
     </HeroSectionSlot>
     <TrustedPartner />
+    <Testimonial />
     <JoinTeam />
     <OurBlogs />
 </template>
@@ -56,6 +57,7 @@ import OurBlogs from '../components/molecules/OurBlogs.vue'
 import JoinTeam from '../components/molecules/JoinTeam.vue';
 import TrustedPartner from '../components/molecules/TrustedPartner.vue';
 import HeroSectionSlot from '../components/atoms/HeroSectionSlot.vue';
+import Testimonial from '../components/molecules/Testimonial.vue';
 </script>
 
 <style scoped>
