@@ -1,5 +1,37 @@
 <script setup lang="ts">
 import { BLOG_DATA } from "../../shared/constants";
+import { onMounted, ref } from "vue";
+const trustedSection = ref<any>();
+const moreBlogsDiv = ref<any>();
+
+
+onMounted(() => {
+
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      trustedSection?.value?.classList.add('animate__animated', 'animate__fadeInUp');
+    } else {
+      trustedSection?.value?.classList.remove('animate__animated', 'animate__fadeInUp');
+    }
+  });
+
+  observer.observe(trustedSection?.value);
+
+  // IntersectionObserver for moreBlogsDiv
+  const moreBlogsObserver = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      moreBlogsDiv?.value?.classList.add('animate__animated', 'animate__fadeInUp'); // Add your custom class or perform other actions
+    } else {
+      moreBlogsDiv?.value?.classList.remove('animate__animated', 'animate__fadeInUp'); // Remove your custom class or perform other actions
+    }
+  });
+
+  moreBlogsObserver.observe(moreBlogsDiv?.value);
+  () => {
+    observer.disconnect();
+  }
+});
+
 </script>
 <template>
   <div
@@ -9,14 +41,17 @@ import { BLOG_DATA } from "../../shared/constants";
       class="rounded-[30px] flex lg:flex-row flex-col items-center justify-between shrink-0 w-full relative gap-2 "
     >
       <div
-        class="text-[#0e163d] text-left font-['DmSans-Regular',_sans-serif] text-5xl leading-[54px] font-bold relative animate__animated animate__fadeInLeft"
+        class="text-[#0e163d] text-left font-['DmSans-Regular',_sans-serif] text-5xl leading-[54px] font-bold relative "
+        ref="trustedSection"
       >
         Our Latest Blogs
       </div>
       <div
         class="border-solid border-[#237ac4] border-2 px-8 py-4 flex flex-row gap-2.5 items-center justify-center shrink-0 relative overflow-hidden animate__animated animate__fadeInLeft"
+        ref="moreBlogsDiv"
       >
         <div
+           
           class="text-[#0e163d] text-center font-['DmSans-Regular',_sans-serif] text-base leading-[22px] font-bold relative"
         >
           More Blogs
@@ -25,6 +60,7 @@ import { BLOG_DATA } from "../../shared/constants";
     </div>
     
     <div
+    
       class="flex lg:flex-row flex-col gap-5 items-center justify-start self-stretch shrink-0 relative animate__animated animate__fadeInUp"
     >
       <div

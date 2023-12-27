@@ -1,7 +1,30 @@
+<script setup lang="ts">
+import OurBlogs from '../components/molecules/OurBlogs.vue'
+import JoinTeam from '../components/molecules/JoinTeam.vue';
+import TrustedPartner from '../components/molecules/TrustedPartner.vue';
+import HeroSectionSlot from '../components/atoms/HeroSectionSlot.vue';
+import Testimonial from '../components/molecules/Testimonial.vue';
+
+import { onMounted, ref } from "vue";
+const trustedSection = ref<any>();
+onMounted(() => {
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      trustedSection?.value?.classList.add('animate__animated', 'animate__fadeInLeft');
+    } else {
+      trustedSection?.value?.classList.remove('animate__animated', 'animate__fadeInLeft');
+    }
+  });
+
+  observer.observe(trustedSection?.value);
+});
+
+</script>
+
 <template>
     <HeroSectionSlot>
-      <div class="flex flex-col gap-[33px] items-start justify-center animate__animated animate__slideInLeft">
-        <div class="pr-[9px] pl-[9px] flex flex-row gap-2.5 items-center justify-center shrink-0 relative">
+      <div class="flex flex-col gap-[33px] items-start justify-center w-full"  ref="trustedSection">
+        <div  class="pr-[9px] pl-[9px] flex flex-row gap-2.5 items-center justify-center shrink-0 relative">
           <div
             class="text-[#ffffff] text-left font-['Montserrat-Regular',_sans-serif] text-5xl font-normal relative self-stretch flex-1 md:w-[48vw] ">
             We design and engineer the most user centric software products
@@ -52,13 +75,6 @@
     <OurBlogs />
 </template>
 
-<script setup lang="ts">
-import OurBlogs from '../components/molecules/OurBlogs.vue'
-import JoinTeam from '../components/molecules/JoinTeam.vue';
-import TrustedPartner from '../components/molecules/TrustedPartner.vue';
-import HeroSectionSlot from '../components/atoms/HeroSectionSlot.vue';
-import Testimonial from '../components/molecules/Testimonial.vue';
-</script>
 
 <style scoped>
 
