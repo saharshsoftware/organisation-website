@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
-import { Autoplay } from "swiper"; // Import for module usage
+// @ts-ignore
+import { Autoplay } from 'swiper/modules';
+
 import "swiper/css";
 import "swiper/css/pagination";
 
 import { onMounted, ref } from "vue";
 import TestTestimonial from "../atoms/TestTestimonial.vue";
 const trustedSection = ref<any>();
-// more module style...
 
 const modules = [Autoplay];
 
@@ -74,8 +75,8 @@ onMounted(() => {
   <div class="text-center" v-else-if="error">{{ error.message }}</div> -->
   <!-- <template > -->
     <swiper
+    :modules="modules"
     :loop="true"
-      :modules="modules"
       :pagination="{ clickable: true }"
       :autoplay="{ delay: 3500, disableOnInteraction: false }"
     >
@@ -89,6 +90,15 @@ onMounted(() => {
         <swiper-slide>
           <TestTestimonial />
         </swiper-slide>
+        <swiper-slide>
+            <TestTestimonial />
+          </swiper-slide>
+          <swiper-slide>
+            <TestTestimonial />
+          </swiper-slide>
+          <swiper-slide>
+            <TestTestimonial />
+          </swiper-slide>
     </swiper>
   <!-- </template> -->
 </template>
