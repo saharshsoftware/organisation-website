@@ -30,7 +30,7 @@ const closetoggle = () => {
         <div
           v-for="(link, index) in NAV_LINK"
           :key="index"
-          class="text-white text-left font-['DmSans-Regular',_sans-serif]  leading-5 font-semibold text-sm relative nav-link"
+          class="text-white text-left leading-5 font-semibold text-sm relative nav-link"
           :class="{ active: route.path === link.path }"
         >
           <RouterLink class="cursor-pointer" :to="link.path">
@@ -55,7 +55,7 @@ const closetoggle = () => {
       <div
         v-for="(link, index) in NAV_LINK"
         :key="index"
-        class="text-left font-['DmSans-Regular',_sans-serif] text-base leading-5 font-bold relative nav-link"
+        class="text-lefttext-base leading-5 font-bold relative nav-link"
         :class="{ active: route.path === link.path }"
       >
         <RouterLink

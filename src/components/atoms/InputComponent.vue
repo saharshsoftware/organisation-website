@@ -3,7 +3,7 @@
     class="flex flex-col gap-0 items-start justify-start self-stretch shrink-0 relative overflow-hidden"
   >
     <label
-      class="text-[#000000] text-left font-['Inter-Regular',_sans-serif] text-sm leading-7 font-normal relative w-[300px] h-7"
+      class="text-[#000000] text-left  text-sm leading-7 font-normal relative w-[300px] h-7"
       :for="id"
       >{{ label }}</label
     >

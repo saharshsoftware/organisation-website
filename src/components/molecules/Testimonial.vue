@@ -38,7 +38,7 @@ const {
 
 <template>
   <div
-  class="text-[#414562] text-center font-['DmSans-Regular',_sans-serif] text-[25px] leading-[38px] font-normal relative"     ref="trustedSection"
+  class="text-[#414562] text-center text-[25px] leading-[38px] font-normal relative"     ref="trustedSection"
   >
   Testimonials
 </div>

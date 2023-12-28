@@ -5,13 +5,13 @@ import InputComponent from "./InputComponent.vue";
 <template>
   <div class="flex flex-col gap-[30px] items-start justify-start relative md:w-[70%] w-full mx-auto animate__animated animate__fadeInUp">
     <div
-      class="text-[#000000] text-left font-['DmSans-Regular',_sans-serif] text-[22px] leading-[30px] font-normal relative self-stretch"
+      class="text-[#000000] text-left text-[22px] leading-[30px] font-normal relative self-stretch"
     >
       Thank you for your interest in Saharsh Software. Please fill out the
       form below to ask a question or report a technical problem..
     </div>
     <div
-      class="text-[#070c21] text-left font-['DmSans-Regular',_sans-serif] text-[38px] leading-[54px] font-normal relative"
+      class="text-[#070c21] text-left text-[38px] leading-[54px] font-normal relative"
     >
       We always love to hear from you
     </div>
@@ -38,7 +38,7 @@ import InputComponent from "./InputComponent.vue";
           class="flex flex-col gap-0 items-start justify-start self-stretch shrink-0 relative overflow-hidden"
         >
           <label
-            class="text-[#000000] text-left font-['Inter-Regular',_sans-serif] text-sm leading-7 font-normal relative w-[300px] h-7"
+            class="text-[#000000] text-left text-sm leading-7 font-normal relative w-[300px] h-7"
             >Message</label
           >
           <textarea
@@ -53,7 +53,7 @@ import InputComponent from "./InputComponent.vue";
         class="bg-[#5e5bff] rounded-[5px] border-solid border-[#5e5bff] border pt-2.5 pr-[15px] pb-2.5 pl-[15px] flex flex-col gap-0 items-center justify-center shrink-0 w-[120px] h-12 relative"
       >
         <div
-          class="text-[#ffffff] text-center font-['Inter-Regular',_sans-serif] text-sm leading-7 font-normal relative"
+          class="text-[#ffffff] text-center text-sm leading-7 font-normal relative"
         >
           Submit
         </div>

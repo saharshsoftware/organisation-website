@@ -32,7 +32,6 @@ onMounted(() => {
   });
 
   lifeDivObserver.observe(lifeDiv?.value);
-
 });
 </script>
 <template>
@@ -41,7 +40,7 @@ onMounted(() => {
   >
     <div
       ref="trustedSection"
-      class="text-[#414562] text-center font-['DmSans-Regular',_sans-serif] text-[25px] leading-[38px] font-normal relative"
+      class="text-[#414562] text-center  text-[25px] leading-[38px] font-normal relative"
     >
       Join Our Team
     </div>
@@ -52,27 +51,27 @@ onMounted(() => {
         class="flex lg:flex-row flex-col items-center justify-between self-stretch relative"
       >
         <div
-          class="pt-[138px] pr-[73px] pb-[138px] pl-[73px] flex flex-col items-center justify-between self-stretch flex-1 relative"
+          class="px-20 py-16 flex flex-col items-center justify-between self-stretch flex-1 relative"
         >
           <div
             ref="lifeDiv"
             class="pt-20 pb-20 flex flex-col gap-[30px] items-start justify-center self-stretch shrink-0 h-[402px] relative"
           >
             <div
-              class="text-[#414562] text-left font-['DmSans-Regular',_sans-serif] text-[25px] leading-[38px] font-normal relative self-stretch"
+              class="text-[#414562] text-left  text-[25px] leading-[38px] font-normal relative self-stretch"
             >
               Life at Saharsh Software
             </div>
             <!-- ref="lifeDiv" -->
             <div
-              class="text-[#414562] text-left font-['DmSans-Regular',_sans-serif] text-[25px] leading-[38px] font-normal relative self-stretch"
+              class="text-[#414562] text-left  text-[25px] leading-[38px] font-normal relative self-stretch"
             >
               “Good place to work !! Flexible work hours and good team to
               motivate and push you towards quality”
             </div>
             <div class="flex justify-between items-center w-full">
               <div
-                class="text-[#414562] text-left font-['DmSans-Regular',_sans-serif] text-xl leading-[30px] font-normal relative self-stretch"
+                class="text-[#414562] text-left  text-xl leading-[30px] font-normal relative self-stretch"
               >
                 Software Engineer
               </div>
