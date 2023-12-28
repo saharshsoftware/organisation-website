@@ -3,7 +3,6 @@ import { onMounted, ref } from "vue";
 import { BLOG_DATA } from "../../shared/constants";
 
 const blogHeading = ref<any>();
-const blogContent = ref<any>();
 
 const isVisibleRef = (selector: any) => {
   if (!selector) return false;
@@ -54,13 +53,13 @@ onMounted(() => {
     >
         Our Latest Blogs
       </div>
-      <div
+      <!-- <div
         class="border-solid border-[#237ac4] border-2 px-8 py-4 flex flex-row gap-2.5 items-center justify-center shrink-0 relative overflow-hidden">
         <div
           class="text-[#0e163d] text-center  text-base leading-[22px] font-bold relative">
           More Blogs
         </div>
-      </div>
+      </div> -->
     </div>
 
     <div class="flex lg:flex-row flex-col gap-5 items-center justify-start self-stretch shrink-0 relative "
@@ -68,7 +67,7 @@ onMounted(() => {
     <!-- ref="blogContent" -->
       <div v-for="(blog, index) in BLOG_DATA" :key="index"
         class="flex flex-col gap-2 items-start justify-start self-stretch flex-1 relative overflow-hidden">
-        <img class="self-stretch shrink-0 h-80 relative" :src="blog.image" />
+        <img class="self-stretch shrink-0 h-80 relative rounded-lg" :src="blog.image" />
         <div class="py-1 px-2">
           <div
             class="text-[#0a102d] text-left  text-3xl relative self-stretch font-normal">

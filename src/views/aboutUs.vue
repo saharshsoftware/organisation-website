@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import BreadCrumbs from "../components/atoms/BreadCrumbs.vue";
-import ContactForm from "../components/atoms/ContactForm.vue";
+import AboutTemplate from "../components/molecules/AboutTemplate.vue";
 import { ROUTE_CONSTANTS } from "../shared/route";
 import { onMounted, ref } from "vue";
 const breadCrumb = ref<any>()
@@ -20,8 +20,8 @@ onMounted(() => {
 
 });
 const breadcrumbs = [
-  { label: 'Saharsh Software', link: ROUTE_CONSTANTS.HOME },
-  { label: 'Contact us', link: ROUTE_CONSTANTS.CONTACT_US },
+  { label: 'Home', link: ROUTE_CONSTANTS.HOME },
+  { label: 'About us', link: ROUTE_CONSTANTS.ABOUT },
 ];
 </script>
 <template>
@@ -30,14 +30,14 @@ const breadcrumbs = [
       <h2 class="text-xl"
       ref="breadCrumb">
 
-        Contact Us
+        About Us
       </h2>
 
       <BreadCrumbs :breadcrumbList="breadcrumbs" />
     </div>
   </section>
   <div class="common-padding m-auto py-4">
-    <ContactForm />
+    <AboutTemplate />
   </div>
 </template>
 

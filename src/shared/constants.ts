@@ -14,6 +14,11 @@ export const NAV_LINK = [
     label: "What We Do",
     id: 1,
   },
+  //   {
+  //   path: "/about-us",
+  //   label: "About Us",
+  //   id: 4,
+  // },
   {
     path: "/contact-us",
     label: "Contact Us",

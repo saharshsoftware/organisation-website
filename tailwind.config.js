@@ -12,6 +12,7 @@ module.exports = {
       transparent: 'transparent',
       current: 'currentColor',
       'primary-color': 'var(--color-primary)',
+      'logo-color': 'var(--logo-color)',
       'white': '#ffffff',
       'purple': '#3f3cbb',
       'midnight': '#121063',

@@ -4,21 +4,6 @@ import { onMounted, ref } from "vue";
 const trustedSection = ref<any>();
 const lifeDiv = ref<any>();
 onMounted(() => {
-  const observer = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) {
-      trustedSection?.value?.classList.add(
-        "animate__animated",
-        "animate__fadeInUp"
-      );
-    } else {
-      trustedSection?.value?.classList.remove(
-        "animate__animated",
-        "animate__fadeInUp"
-      );
-    }
-  });
-
-  observer.observe(trustedSection?.value);
 
   const lifeDivObserver = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting) {
@@ -33,6 +18,44 @@ onMounted(() => {
 
   lifeDivObserver.observe(lifeDiv?.value);
 });
+
+const isVisibleRef = (selector: any) => {
+  if (!selector) return false;
+  let isVisible = false;
+
+  const observer = new IntersectionObserver((entries) => {
+    const entry = entries[0];
+
+    const newVisibility = entry.isIntersecting;
+
+    // Check if the visibility state has changed
+    if (newVisibility !== isVisible) {
+      isVisible = newVisibility;
+
+      // Toggle the class based on the new visibility state
+      if (isVisible) {
+        selector?.classList?.add('animate__fadeInUp');
+      } else {
+        // Add a delay before removing the class
+        setTimeout(() => {
+          selector?.classList?.remove('animate__fadeInUp');
+        }, 500); // Adjust the delay as needed
+      }
+    }
+  }
+    , {
+      threshold: 1
+    }
+  );
+
+  observer.observe(selector);
+  return true;
+};
+
+onMounted(() => {
+  isVisibleRef(trustedSection.value);
+  // isVisibleRef(blogContent.value);
+});
 </script>
 <template>
   <div
@@ -40,7 +63,7 @@ onMounted(() => {
   >
     <div
       ref="trustedSection"
-      class="text-[#414562] text-center  text-[25px] leading-[38px] font-normal relative"
+      class="text-[#414562] text-center  text-[25px] leading-[38px] font-normal relative animate__animated"
     >
       Join Our Team
     </div>

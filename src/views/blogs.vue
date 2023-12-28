@@ -20,14 +20,14 @@ onMounted(() => {
 
 });
 const breadcrumbs = [
-  { label: 'Home', link: ROUTE_CONSTANTS.HOME },
+  { label: 'Saharsh Software', link: ROUTE_CONSTANTS.HOME },
   { label: 'Blogs', link: ROUTE_CONSTANTS.BLOG },
 ];
 </script>
 <template>
   <section class="common-padding py-9 relative bg-primary-color">
-    <div class="text-white flex flex-col items-start justify-between gap-5" ref="breadCrumb">
-      <h2 class="text-xl">
+    <div class="text-white flex flex-col items-start justify-between gap-5" >
+      <h2 class="text-xl" ref="breadCrumb">
 
         Blogs
       </h2>

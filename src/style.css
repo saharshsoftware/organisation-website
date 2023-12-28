@@ -15,10 +15,15 @@
 
   --color-banner-from: #c0222200;
   --color-banner-to: #0a102d;
+  --logo-color: #3FABE6;
 }
 
 body {
   font-family: 'Poppins', sans-serif;
+}
+
+.hero-section-bg {
+  background: linear-gradient(to right, #0A102D, #187b99eb);
 }
 
 input::placeholder, textarea::placeholder {

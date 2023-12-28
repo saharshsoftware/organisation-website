@@ -50,7 +50,7 @@ import InputComponent from "./InputComponent.vue";
         </div>
       </div>
       <div
-        class="bg-[#5e5bff] rounded-[5px] border-solid border-[#5e5bff] border pt-2.5 pr-[15px] pb-2.5 pl-[15px] flex flex-col gap-0 items-center justify-center shrink-0 w-[120px] h-12 relative"
+        class="bg-primary-color rounded-[5px]  border px-2 py-1 flex flex-col gap-0 items-center justify-center shrink-0 w-[120px]  relative"
       >
         <div
           class="text-[#ffffff] text-center text-sm leading-7 font-normal relative"
