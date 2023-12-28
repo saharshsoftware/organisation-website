@@ -4,36 +4,36 @@ import { onMounted, ref } from "vue";
 const trustedSection = ref<any>();
 
 
-const isVisibleRef = (selector: any) => {
-  if (!selector) return false;
-  let isVisible = false; // Track the current visibility state
+// const isVisibleRef = (selector: any) => {
+//   if (!selector) return false;
+//   let isVisible = false; // Track the current visibility state
 
-  const observer = new IntersectionObserver((entries) => {
-    const entry = entries[0];
+//   const observer = new IntersectionObserver((entries) => {
+//     const entry = entries[0];
 
-    const newVisibility = entry.isIntersecting ;
+//     const newVisibility = entry.isIntersecting ;
 
-    // Check if the visibility state has changed
-    if (newVisibility !== isVisible) {
-      isVisible = newVisibility;
+//     // Check if the visibility state has changed
+//     if (newVisibility !== isVisible) {
+//       isVisible = newVisibility;
 
-      // Toggle the class based on the new visibility state
-      if (isVisible) {
-        selector?.classList?.add('animate__fadeInDown');
-      } else {
-        // Add a delay before removing the class
-        setTimeout(() => {
-          selector?.classList?.remove('animate__fadeInDown');
-        }, 500); // Adjust the delay as needed
-      }
-    }
-  }, {
-    threshold: 0.5
-  });
+//       // Toggle the class based on the new visibility state
+//       if (isVisible) {
+//         selector?.classList?.add('animate__fadeInDown');
+//       } else {
+//         // Add a delay before removing the class
+//         setTimeout(() => {
+//           selector?.classList?.remove('animate__fadeInDown');
+//         }, 500); // Adjust the delay as needed
+//       }
+//     }
+//   }, {
+//     threshold: 0.5
+//   });
 
-  observer.observe(selector);
-  return true;
-};
+//   observer.observe(selector);
+//   return true;
+// };
 
 
 onMounted(() => {

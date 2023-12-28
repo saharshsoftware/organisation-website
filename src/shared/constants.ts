@@ -1,4 +1,3 @@
-import { icon } from '@fortawesome/fontawesome-svg-core';
 import {IMAGES} from '../shared/images'
 
 export const SOCIAL_LINKS =  {

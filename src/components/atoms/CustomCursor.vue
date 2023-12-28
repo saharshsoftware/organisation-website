@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div ref="cursor" class="cursor-container">
   </div>
 </template>
@@ -38,4 +38,4 @@ const updateCursorPosition = () => {
 
 <style scoped>
 /* ... (cursor styles here) */
-</style>
+</style> -->
