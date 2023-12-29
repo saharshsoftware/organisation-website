@@ -63,7 +63,7 @@ onMounted(() => {
   >
     <div
       ref="trustedSection"
-      class="text-[#414562] text-center  text-[25px] leading-[38px] font-normal relative animate__animated"
+      class="text-[#414562] text-center  text-2xl leading-10 heading font-normal relative animate__animated"
     >
       Join Our Team
     </div>

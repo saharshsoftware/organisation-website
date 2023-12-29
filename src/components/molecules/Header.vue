@@ -85,7 +85,7 @@ const closetoggle = () => {
   content: "";
   left: 0;
   bottom: 0;
-  height: 1px;
+  height: 0.1rem;
   width: 0;
   transition: width 0.5s ease-in-out;
 }

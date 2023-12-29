@@ -7,6 +7,7 @@ import Testimonial from '../components/molecules/Testimonial.vue';
 
 import { onMounted, ref } from "vue";
 const trustedSection = ref<any>();
+
 onMounted(() => {
   const observer = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting) {
@@ -68,6 +69,7 @@ onMounted(() => {
             </div>
           </div>
         </div>
+
       </div>
     </HeroSectionSlot>
     <TrustedPartner />

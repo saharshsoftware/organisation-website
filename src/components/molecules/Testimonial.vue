@@ -65,10 +65,13 @@ onMounted(() => {
 </script>
 
 <template>
+  <div>
   <div
-  class="text-[#414562] text-center text-[25px] leading-[38px] font-normal relative animate__animated"     ref="trustedSection"
-  >
-  Testimonials
+  class="text-[#414562] text-center text-2xl leading-10  font-normal relative animate__animated"    >
+  <span class="heading relative animate__animated" ref="trustedSection">
+
+    Testimonials
+  </span>
 </div>
 <!-- don't delete -->
   <!-- <div class="text-center" v-if="isPending">Loading...</div>
@@ -100,6 +103,7 @@ onMounted(() => {
             <TestTestimonial />
           </swiper-slide>
     </swiper>
+    </div>
   <!-- </template> -->
 </template>
 

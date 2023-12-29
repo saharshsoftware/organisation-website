@@ -27,7 +27,7 @@ const breadcrumbs = [
 <template>
   <section class="common-padding py-9 relative bg-primary-color">
     <div class="text-white flex flex-col items-start justify-between gap-5" >
-      <h2 class="text-xl" ref="breadCrumb">
+      <h2 class="text-3xl" ref="breadCrumb">
 
         Blogs
       </h2>

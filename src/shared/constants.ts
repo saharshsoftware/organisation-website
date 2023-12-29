@@ -7,17 +7,25 @@ export const SOCIAL_LINKS =  {
   TWITTER: "https://twitter.com/saharshsoftware"
 }
 
+export const STRINGS = {
+  HOME: "Home",
+  ABOUT_US: "About Us",
+  CONTACT_US: "Contact Us",
+  SAHARSH_SOFTWARE: "Saharsh Software",
+  BLOGS: "Blogs"
+}
+
 export const NAV_LINK = [
   {
     path: "/",
     label: "What We Do",
     id: 1,
   },
-  //   {
-  //   path: "/about-us",
-  //   label: "About Us",
-  //   id: 4,
-  // },
+    {
+    path: "/about-us",
+    label: "About Us",
+    id: 4,
+  },
   {
     path: "/contact-us",
     label: "Contact Us",

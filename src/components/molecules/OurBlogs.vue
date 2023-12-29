@@ -48,7 +48,7 @@ onMounted(() => {
     ref="blogHeading"
     >
     <div
-    class="text-[#0e163d] text-center  text-5xl leading-[54px] font-normal relative animate__animated"
+    class="text-[#0e163d] text-center  text-3xl leading-6 heading font-normal relative animate__animated"
     id="blog-heading"
     >
         Our Latest Blogs

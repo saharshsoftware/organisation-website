@@ -12,7 +12,7 @@
           class="pr-[9px] pl-[9px] flex flex-row gap-2.5 items-center justify-center shrink-0 relative"
         >
           <div
-            class="text-[#ffffff] text-left font-['Montserrat-Regular',_sans-serif] text-[40px] leading-[45px] font-normal relative self-stretch flex-1"
+            class="text-[#ffffff] text-left font-['Montserrat-Regular',_sans-serif] text-3xl leading-10 font-normal relative self-stretch flex-1"
           >
             We design and engineer the most user centric software products
           </div>
