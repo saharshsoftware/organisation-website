@@ -12,6 +12,7 @@ function openLink(url: string) {
           >
           <!-- twitter -->
             <svg
+              class="cursor-pointer"
               xmlns="http://www.w3.org/2000/svg"
               height="43"
               width="29"
@@ -26,6 +27,7 @@ function openLink(url: string) {
 
             <!-- linkedin -->
             <svg
+              class="cursor-pointer"
               xmlns="http://www.w3.org/2000/svg"
               height="43"
               width="29"
@@ -40,6 +42,7 @@ function openLink(url: string) {
 
             <!-- facebook -->
             <svg
+              class="cursor-pointer"
               xmlns="http://www.w3.org/2000/svg"
               height="43"
               width="29"
@@ -54,6 +57,7 @@ function openLink(url: string) {
 
             <!-- instagram -->
             <svg
+              class="cursor-pointer"
               xmlns="http://www.w3.org/2000/svg"
               height="43"
               width="29"

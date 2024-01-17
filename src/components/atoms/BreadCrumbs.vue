@@ -2,7 +2,7 @@
 import { toRef } from "vue";
 
 interface breadItems {
-  link: string;
+  link?: string;
   label: string;
 }
 
@@ -12,8 +12,6 @@ interface IBreadCrumb {
 
 const props = defineProps<IBreadCrumb>();
 const breadcrumbList = toRef(props.breadcrumbList);
-
-
 
 </script>
 <template>

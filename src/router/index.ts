@@ -23,8 +23,13 @@ const router = createRouter({
       path: ROUTE_CONSTANTS.BLOG,
       name: 'blog',
       component: () => import('../views/blogs.vue')
-    },
-  ]
+    },{
+
+      path: `${ROUTE_CONSTANTS.BLOG}/:id`,
+      component: () => import('../views/blogDetail.vue'),
+      props: route => ({ id: route.params.id }),
+    }
+    ]
 })
 
 export default router
