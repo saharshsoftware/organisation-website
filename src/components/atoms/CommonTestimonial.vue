@@ -1,15 +1,19 @@
 <script setup lang="ts">
 import { toRefs } from "vue";
-import { BASE_URL } from "../../shared/api";
 
-const props = defineProps({
-  author: String,
-  content: String,
-  image_url: String,
-});
+// shareds
+import { IMAGES } from "../../shared/images"
+
+interface Props {
+  author: string,
+  content: string,
+  image_url?: string,
+}
+
+const props = defineProps<Props>();
 
 const { author, content, image_url } = toRefs(props);
-const profile_image = BASE_URL + image_url?.value;
+
 </script>
 
 <template>
@@ -31,10 +35,9 @@ const profile_image = BASE_URL + image_url?.value;
           <p class="text-lg font-medium text-gray-900">"{{ content }}"</p>
         </blockquote>
         <figcaption class="mt-6 flex items-center justify-center space-x-3">
-          <!-- src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gouch.png" -->
           <img
             class="h-6 w-6 rounded-full"
-            :src="profile_image"
+            :src="image_url ?? IMAGES.imagePlaceholder"
             alt="profile picture"
           />
           <div class="flex items-center divide-x-2 divide-gray-500">

@@ -1,3 +1,4 @@
 export const API = {
-  TESTIMONIAL: "/api/testimonials"
+  TESTIMONIAL: "/api/testimonials",
+  BLOGS: "/api/blogs"
 }

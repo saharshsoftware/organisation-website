@@ -6,7 +6,8 @@ import image4 from '../assets/images/twitter-1.png'
 import lappy from '../assets/images/lappy.jpg'
 import aboutImg from "../assets/images/aboutUs.jpg"
 import mission from '../assets/images/mission.jpg'
+import imagePlaceholder from "../assets/images/image_placeholder.jpg"
 
 export const IMAGES = {
-logo, image1, image2, image3, image4 , lappy, aboutImg, mission
+logo, image1, image2, image3, image4 , lappy, aboutImg, mission, imagePlaceholder
 }

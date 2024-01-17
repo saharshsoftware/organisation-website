@@ -1,5 +1,5 @@
 // api.ts
-export const BASE_URL = "http://localhost:1337"; // Replace with your API base URL
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 interface RequestOptions {
   method: string;
@@ -24,7 +24,7 @@ const fetchData = async (
     ...options,
   };
 
-  const response = await fetch(`${BASE_URL}${url}${queryString}`, config);
+  const response = await fetch(`${API_BASE_URL}${url}${queryString}`, config);
 
   if (!response.ok) {
     throw new Error(`Error: ${response.status} - ${response.statusText}`);
