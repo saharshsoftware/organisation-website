@@ -72,10 +72,10 @@ onMounted(() => {
 
 <template>
   <div
-    class="flex flex-col gap-[50px] items-start justify-start relative common-padding py-6 auto bg-[#F2F7F9]"
+    class="flex flex-col gap-4 items-start justify-start relative common-padding py-6 auto bg-[#F2F7F9]"
   >
     <div
-      class="rounded-[30px] flex lg:flex-row flex-col items-center justify-between shrink-0 w-full relative gap-2 animate__animated"
+      class="rounded-[30px] flex lg:flex-row flex-col items-center justify-between shrink-0 w-full relative gap-4 animate__animated"
       ref="blogHeading"
     >
       <div
@@ -104,7 +104,7 @@ onMounted(() => {
           <div
           v-for="(blog, index) in blogsData?.data?.slice(0, 3)"
           :key="index"
-          class="flex flex-col gap-4 items-start justify-start relative overflow-hidden h-[400px] cursor-pointer"
+          class="flex flex-col gap-4 items-start justify-start relative overflow-hidden h-[420px] cursor-pointer"
           @click="() => onBlogClick(blog)"
         >
           <em class="h-3/5 w-full">
@@ -148,7 +148,7 @@ onMounted(() => {
         <div
             v-for="(blog, index) in blogsData?.data"
             :key="index"
-            class="flex flex-col gap-4 items-start justify-start relative overflow-hidden h-[400px] cursor-pointer"
+            class="flex flex-col gap-4 items-start justify-start relative overflow-hidden h-[420px] cursor-pointer"
             @click="() => onBlogClick(blog)"
             >
             <em class="h-3/5 w-full">

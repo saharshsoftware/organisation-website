@@ -7,15 +7,15 @@ import { ROUTE_CONSTANTS } from "../shared/route";
 import { STRINGS } from "../shared/constants";
 import { onMounted, ref } from "vue";
 
-import { useQuery } from "@tanstack/vue-query";
-import { getAboutUsRequest } from "../services/aboutus";
+// import { useQuery } from "@tanstack/vue-query";
+// import { getAboutUsRequest } from "../services/aboutus";
 
-const { data } = useQuery({
-  queryKey: ["about-us"],
-  queryFn: () => getAboutUsRequest({ params: { populate: "*" } }),
-});
+// const { data } = useQuery({
+//   queryKey: ["about-us"],
+//   queryFn: () => getAboutUsRequest({ params: { populate: "*" } }),
+// });
 
-console.log(data.value, "about-us-data")
+// console.log(data.value, "about-us-data")
 
 const breadCrumb = ref<any>();
 

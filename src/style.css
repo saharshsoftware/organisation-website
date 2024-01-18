@@ -11,6 +11,7 @@
   --color-success: #38a169;
   --color-warning: #e37400;
   --color-danger: #e3342f;
+  --link-color: #3c75f0;
   /* Add more color variables as needed */
 
   --color-banner-from: #c0222200;
@@ -71,4 +72,72 @@ input:focus-visible, textarea:focus-visible {
   transition: width 0.5s ease-in-out;
   width: 60%;
   background: var(--logo-color);
+}
+
+/* .blog-json-class h5 {
+  @apply text-lg font-bold mb-4 text-error;
+} */
+
+.blog-json-class {
+
+  h1 {
+    @apply text-4xl mb-4;
+  }
+
+  h2 {
+    @apply text-3xl mb-4;
+  }
+
+  h3 {
+    @apply text-2xl mb-4;
+  }
+
+  h4 {
+    @apply text-xl mb-4;
+  }
+
+  h5 {
+    @apply text-lg mb-4;
+  }
+
+  h6 {
+    @apply text-base mb-4;
+  }
+
+  b, strong {
+    @apply font-bold;
+  }
+
+  u {
+    @apply underline;
+  }
+
+  p a {
+    @apply text-[var(--link-color)] underline;
+  }
+
+  s {
+    @apply line-through;
+  }
+
+    ul {
+      @apply list-disc ml-6 mb-4;
+    }
+  
+    ol {
+      @apply list-decimal ml-6 mb-4;
+    }
+  
+    li {
+      @apply mb-2;
+    }
+  
+    pre {
+      @apply bg-[#f2f2f2] p-4 rounded-md mb-4;
+    }
+  
+    code {
+      @apply font-mono text-sm bg-[#f2f2f2] p-1 rounded-md;
+    }
+  
 }

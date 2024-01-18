@@ -5,11 +5,13 @@ import Footer from './components/molecules/Footer.vue'
 </script>
 
 <template>
-  <Header />
-  <div class="">
-    <RouterView />
-  </div>
-  <Footer />
+  <div class="flex flex-col min-h-screen">
+      <Header />
+      <div class="flex-1">
+        <RouterView />
+      </div>
+      <Footer />
+    </div>
 </template>
 
 <style scoped></style>

@@ -2,8 +2,8 @@
 
 // libs
 import { onMounted, ref } from "vue";
-import { useQuery } from "@tanstack/vue-query";
-import { getHeroSectionRequest } from "../services/herosection";
+// import { useQuery } from "@tanstack/vue-query";
+// import { getHeroSectionRequest } from "../services/herosection";
 
 // components
 import OurBlogs from "../components/molecules/OurBlogs.vue";
@@ -16,12 +16,12 @@ import HomeSubSection from "../components/atoms/HomeSubSection.vue";
 // constants
 import { STRINGS } from "../shared/constants";
 
-const { data } = useQuery({
-  queryKey: ["hero-section"],
-  queryFn: () => getHeroSectionRequest({ params: { populate: "*" } }),
-});
+// const { data } = useQuery({
+//   queryKey: ["hero-section"],
+//   queryFn: () => getHeroSectionRequest({ params: { populate: "*" } }),
+// });
 
-console.log(data.value, "hero-section")
+// console.log(data.value, "hero-section")
 const trustedSection = ref<any>();
 
 onMounted(() => {
