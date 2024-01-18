@@ -7,6 +7,15 @@ import BreadCrumbs from "../components/atoms/BreadCrumbs.vue";
 import Loader from "../components/atoms/Loader.vue";
 import { IMAGES } from "../shared/images";
 import { ref, watch } from "vue";
+import MarkdownIt from 'markdown-it';
+
+const renderMarkdown = (markdown: any) => {
+  const md = new MarkdownIt({
+    html: true,
+    linkify: true,
+  });
+  return md.render(markdown);
+};
 
 const route = useRoute();
 let blogDataRef = ref<any>(null);
@@ -27,56 +36,7 @@ watch(blogData, (newValue) => {
   blogDataRef.value = newValue.data;
 });
 
-const renderHTML = (blocks: any) => {
-  console.log(blocks, "blockess")
-  return blocks
-    .map((block: any) => {
-      // Handle different block types
-      if (block.type === "paragraph") {
-        return `<p>${renderInlineStyles(block.children)}</p>`;
-      } else if (block.type === "heading") {
-        return `<h${block.level}>${renderInlineStyles(block.children)}</h${
-          block.level
-        }>`;
-      } else if (block.type === "list") {
-        return renderList(block);
-      } else if (block.type === "link") {
-        return `<a href="${block.url}">${renderInlineStyles(
-          block.children
-        )}</a>`;
-      }
-      // Add more block types as needed
-    })
-    .join("");
-};
 
-const renderInlineStyles = (children: any) => {
-  return children
-    .map((child: any) => {
-      if (child.bold) {
-        return `<strong>${child.text}</strong>`;
-      }
-      if (child.type === "link") {
-        return `<a href="${child.url}">${renderInlineStyles(
-          child.children
-        )}</a>`;
-      }
-      // Add more inline styles as needed
-      return child.text;
-    })
-    .join("");
-};
-
-const renderList = (list: any) => {
-  const listItems = list.children
-    .map((item: any) => {
-      return `<li>${renderInlineStyles(item.children)}</li>`;
-    })
-    .join("");
-  return `<${list.format === "ordered" ? "ol" : "ul"}>${listItems}</${
-    list.format === "ordered" ? "ol" : "ul"
-  }>`;
-};
 
 </script>
 
@@ -108,10 +68,17 @@ const renderList = (list: any) => {
       >
         {{ blogDataRef?.attributes?.title }}
       </div>
-      <div
+      <!-- <div
         class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class"
         v-html="renderHTML(blogDataRef?.attributes?.desc)"
-      ></div>
+      ></div> -->
+
+        <div
+          class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class"
+          v-html="renderMarkdown(blogDataRef?.attributes?.description)"
+        >
+      </div>
+       
     </div>
   </template>
 </template>

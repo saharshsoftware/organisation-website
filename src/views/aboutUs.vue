@@ -1,21 +1,35 @@
 <script setup lang="ts">
 import BreadCrumbs from "../components/atoms/BreadCrumbs.vue";
-import TwoSectionComponent from "../components/atoms/TwoSectionComponent.vue";
+// import TwoSectionComponent from "../components/atoms/TwoSectionComponent.vue";
 
-import { IMAGES } from "../shared/images";
+// import { IMAGES } from "../shared/images";
 import { ROUTE_CONSTANTS } from "../shared/route";
 import { STRINGS } from "../shared/constants";
-import { onMounted, ref } from "vue";
+import MarkdownIt from 'markdown-it';
+import { onMounted, ref, watch } from "vue";
 
-// import { useQuery } from "@tanstack/vue-query";
-// import { getAboutUsRequest } from "../services/aboutus";
+import { useQuery } from "@tanstack/vue-query";
+import { getAboutUsRequest } from "../services/aboutus";
 
-// const { data } = useQuery({
-//   queryKey: ["about-us"],
-//   queryFn: () => getAboutUsRequest({ params: { populate: "*" } }),
-// });
+let aboutDataRef = ref<any>(null);
 
-// console.log(data.value, "about-us-data")
+
+const renderMarkdown = (markdown: any) => {
+  const md = new MarkdownIt({
+    html: true,
+    linkify: true,
+  });
+  return md.render(markdown);
+};
+
+const { data: aboutData } = useQuery({
+  queryKey: ["about-us"],
+  queryFn: () => getAboutUsRequest({ params: { populate: "*" } }),
+});
+
+watch(aboutData, (newValue) => {
+  aboutDataRef.value = newValue.data?.[0];
+});
 
 const breadCrumb = ref<any>();
 
@@ -49,8 +63,20 @@ const breadcrumbs = [
       <BreadCrumbs :breadcrumbList="breadcrumbs" />
     </div>
   </section>
-  <div class="m-auto" id="abc">
-    <!-- :isReverse="true" -->
+  <template v-if="aboutDataRef">
+        <div
+            class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class"
+            v-html="renderMarkdown(aboutDataRef?.attributes?.mision)"
+          >
+        </div>
+
+            <div
+              class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class"
+              v-html="renderMarkdown(aboutDataRef?.attributes?.vision)"
+            >
+          </div>
+  </template>
+  <!-- <div class="m-auto" id="abc">
     <TwoSectionComponent
       :classLeft="'flex items-start justify-center text-pretty flex-col gap-4'"
       :classRight="'text-white bg-priamry-color bg-no-repeat bg-center bg-cover'"
@@ -148,8 +174,7 @@ const breadcrumbs = [
         <img class="relative h-full" :src="IMAGES.aboutImg" />
       </template>
     </TwoSectionComponent>
-    <!-- <img class="relative h-full" :src="IMAGES.aboutImg" /> -->
-  </div>
+  </div> -->
 </template>
 
 <style scoped></style>
