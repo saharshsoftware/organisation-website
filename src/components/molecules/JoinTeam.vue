@@ -1,8 +1,22 @@
 <script setup lang="ts">
 import logo from "../../assets/images/digital-professional.jpg";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, computed } from "vue";
+
 const trustedSection = ref<any>();
 const lifeDiv = ref<any>();
+
+import { useQuery } from "@tanstack/vue-query";
+import { getJoinTeamRequest } from "../../services/jointeam";
+
+const { data: joinTeamData } = useQuery({
+  queryKey: ["join-team"],
+  queryFn: () => getJoinTeamRequest({ params: { populate: "*" } }),
+});
+
+const formattedjoinTeamData = computed(() => {
+  return joinTeamData.value?.data?.attributes ?? {};
+});
+
 onMounted(() => {
 
   const lifeDivObserver = new IntersectionObserver((entries) => {
@@ -78,25 +92,24 @@ onMounted(() => {
         >
           <div
             ref="lifeDiv"
-            class="pt-20 pb-20 flex flex-col gap-[30px] items-start justify-center self-stretch shrink-0 h-[402px] relative"
+            class="pt-20 pb-20 flex flex-col gap-[30px] items-start justify-center self-stretch shrink-0 h-[402px] relative overflow-hidden"
           >
             <div
               class="text-[#414562] text-left  text-[25px] leading-[38px] font-normal relative self-stretch"
             >
-              Life at Saharsh Software
+              {{ formattedjoinTeamData.title }}
             </div>
             <!-- ref="lifeDiv" -->
             <div
-              class="text-[#414562] text-left  text-[25px] leading-[38px] font-normal relative self-stretch"
+              class="text-[#414562] text-left  text-[25px] leading-[38px] font-normal relative self-stretch "
             >
-              “Good place to work !! Flexible work hours and good team to
-              motivate and push you towards quality”
+            {{ formattedjoinTeamData.message }}
             </div>
             <div class="flex justify-between items-center w-full">
               <div
                 class="text-[#414562] text-left  text-xl leading-[30px] font-normal relative self-stretch"
               >
-                Software Engineer
+                {{ formattedjoinTeamData.role }}
               </div>
               <div
                 class="bg-[#f0f0f0] flex flex-row gap-2.5 items-center justify-start self-stretch shrink-0 relative overflow-hidden"

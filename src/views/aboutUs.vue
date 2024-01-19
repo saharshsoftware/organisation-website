@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import BreadCrumbs from "../components/atoms/BreadCrumbs.vue";
+import { useResizeObserver } from "@vueuse/core";
+
 // import TwoSectionComponent from "../components/atoms/TwoSectionComponent.vue";
 
 // import { IMAGES } from "../shared/images";
 import { ROUTE_CONSTANTS } from "../shared/route";
 import { STRINGS } from "../shared/constants";
 import MarkdownIt from 'markdown-it';
-import { onMounted, ref, watch } from "vue";
+import {computed, onMounted, ref } from "vue";
 
 import { useQuery } from "@tanstack/vue-query";
 import { getAboutUsRequest } from "../services/aboutus";
-
-let aboutDataRef = ref<any>(null);
 
 
 const renderMarkdown = (markdown: any) => {
@@ -27,8 +27,18 @@ const { data: aboutData } = useQuery({
   queryFn: () => getAboutUsRequest({ params: { populate: "*" } }),
 });
 
-watch(aboutData, (newValue) => {
-  aboutDataRef.value = newValue.data?.[0];
+const formattedAboutUsData = computed(() => {
+  return aboutData.value?.data?.attributes ?? {};
+});
+
+const el = ref(null);
+const isTablet = ref(false);
+
+useResizeObserver(el, (entries) => {
+  const entry = entries[0];
+  const { width } = entry.contentRect;
+  isTablet.value = width > 768;
+  console.log(isTablet.value);
 });
 
 const breadCrumb = ref<any>();
@@ -63,18 +73,23 @@ const breadcrumbs = [
       <BreadCrumbs :breadcrumbList="breadcrumbs" />
     </div>
   </section>
-  <template v-if="aboutDataRef">
+  <template v-if="formattedAboutUsData">
+    <section
+      ref="el" 
+      class="flex flex-col common-padding gap-8 py-4"
+    >
         <div
             class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class"
-            v-html="renderMarkdown(aboutDataRef?.attributes?.mision)"
+            v-html="renderMarkdown(formattedAboutUsData?.mision)"
           >
         </div>
 
             <div
               class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class"
-              v-html="renderMarkdown(aboutDataRef?.attributes?.vision)"
+              v-html="renderMarkdown(formattedAboutUsData?.vision)"
             >
           </div>
+          </section>
   </template>
   <!-- <div class="m-auto" id="abc">
     <TwoSectionComponent
