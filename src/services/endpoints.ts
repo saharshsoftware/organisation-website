@@ -6,5 +6,6 @@ export const API = {
   JOIN_TEAM: "/api/join-team",  
   FOOTER: "/api/footer",
   TRUSTED_PARTNER: "/api/trusted-partner",
-  NAVBAR: "/api/navbar"
+  NAVBAR: "/api/navbar",
+  CONTACT_USER: "/api/contact-users"
 }
