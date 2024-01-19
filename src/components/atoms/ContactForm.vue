@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { useVuelidate } from "@vuelidate/core";
-import { required } from "@vuelidate/validators";
+import { required, email } from "@vuelidate/validators";
 import { reactive } from "vue";
 import InputComponent from "./InputComponent.vue";
+import { useMutation } from "@tanstack/vue-query";
+import { createContactUserRequest } from "../../services/contactUser";
 
 const formData = reactive<any>({
   email: "",
@@ -11,9 +13,17 @@ const formData = reactive<any>({
   message: "",
 });
 
+const resetForm = () => {
+  formData.email = ""
+  formData.username=  ""
+  formData.subject=  "",
+  formData.message = ""
+}
+
 const rules = {
   email: {
     required,
+    email
   },
 
   username: {
@@ -28,18 +38,27 @@ const rules = {
 };
 
 const v$ = useVuelidate(rules, formData);
+
+const {
+  mutate: mutateContactForm,
+} = useMutation({
+  mutationFn: createContactUserRequest,
+  onSuccess: async () => {
+    await v$.value.$reset();
+    resetForm()
+  },
+});
+
 const addContactUser = async () => {
   const result = await v$.value.$validate();
-
   if (result) {
-    // let { email, username, subject, message } = formData;
-
-    const payload = {
-      formData: {
-        
-      },
-    };
-    console.log(formData, payload);
+    let { email, username, subject, message } = formData;
+    const body = {
+      data : {
+        email, username, subject, message 
+      }
+    }
+    mutateContactForm({body})
   } else {
     console.log("Form is invalidate");
   }
@@ -111,8 +130,8 @@ const addContactUser = async () => {
           <span v-if="v$?.message?.$error" class="text-error">{{ v$?.message?.$errors?.[0]?.$message }}</span>
         </div>
       </div>
-      <div
-        class="cursor-pointer bg-primary-color rounded-[5px] border px-2 py-1 flex flex-col gap-0 items-center justify-center shrink-0 w-[120px] relative"
+      <button
+        class=" cursor-pointer bg-primary-color rounded-[5px] border px-2 py-1 flex flex-col gap-0 items-center justify-center shrink-0 w-[120px] relative"
       >
         <div
           class="text-[#ffffff] text-center text-sm leading-7 font-normal relative "
@@ -120,7 +139,7 @@ const addContactUser = async () => {
         >
           Submit
         </div>
-      </div>
+      </button>
     </div>
   </div>
 </template>
