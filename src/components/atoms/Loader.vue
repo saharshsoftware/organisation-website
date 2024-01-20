@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-center ">
+  <div class="flex items-center justify-center py-4">
 
     <span class="loading loading-spinner"></span> &nbsp; Loading
   </div>

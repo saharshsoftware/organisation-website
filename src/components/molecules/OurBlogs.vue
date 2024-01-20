@@ -5,6 +5,7 @@ import { getBlogs } from "../../services/blogs";
 import { useRouter } from "vue-router";
 import { ROUTE_CONSTANTS } from "../../shared/route";
 import CommonBlogCard from "../atoms/CommonBlogCard.vue";
+import Loader from "../atoms/Loader.vue";
 
 interface Props {
   isLandingPage?: boolean;
@@ -71,34 +72,37 @@ onMounted(() => {
 
 <template>
   <div
-    class="flex flex-col gap-4 items-start justify-start relative common-padding py-6 auto bg-[#F2F7F9]"
+    class="flex flex-col gap-4 justify-start relative common-padding py-6 auto bg-[#F2F7F9]"
   >
-    <div
-      class="rounded-[30px] flex lg:flex-row flex-col items-center justify-between shrink-0 w-full relative gap-4 animate__animated"
-      ref="blogHeading"
-    >
-      <div
-        class="text-[#0e163d] text-center text-3xl leading-6 heading font-normal relative animate__animated"
-        id="blog-heading"
-      >
-        Our Latest Blogs
-      </div>
-      <div
-        v-if="blogsData?.data?.length > 3 && isLandingPage"
-        class="border-solid border-[#237ac4] border-2 px-8 py-4 flex flex-row gap-2.5 items-center justify-center shrink-0 relative overflow-hidden cursor-pointer"
-        @click="moveToMoreBlog"
-      >
-        <div
-          class="text-[#0e163d] text-center text-base leading-[22px] font-bold relative"
-        >
-          More Blogs
-        </div>
-      </div>
-    </div>
     <template v-if="isLoading || !blogsData?.data?.length">
-      <div class="text-center" v-if="isLoading">Loading...</div>
+      <div class="text-center">
+        <Loader />
+      </div>
     </template>
     <template v-else>
+      <div
+        class="rounded-[30px] flex lg:flex-row flex-col items-center justify-between shrink-0 w-full relative gap-4 animate__animated"
+        ref="blogHeading"
+      >
+        <div
+          class="text-[#0e163d] text-center text-3xl leading-6 heading font-normal relative animate__animated"
+          id="blog-heading"
+        >
+          Our Latest Blogs
+        </div>
+        <div
+          v-if="blogsData?.data?.length > 3 && isLandingPage"
+          class="border-solid border-[#237ac4] border-2 px-8 py-4 flex flex-row gap-2.5 items-center justify-center shrink-0 relative overflow-hidden cursor-pointer"
+          @click="moveToMoreBlog"
+        >
+          <div
+            class="text-[#0e163d] text-center text-base leading-[22px] font-bold relative"
+          >
+            More Blogs
+          </div>
+        </div>
+      </div>
+
       <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-4">
         <template v-if="isLandingPage">
           <div

@@ -22,7 +22,7 @@ const renderMarkdown = (markdown: any) => {
   return md.render(markdown);
 };
 
-const { data: aboutData } = useQuery({
+const { data: aboutData, isLoading } = useQuery({
   queryKey: ["about-us"],
   queryFn: () => getAboutUsRequest({ params: { populate: "*" } }),
 });
@@ -73,6 +73,9 @@ const breadcrumbs = [
       <BreadCrumbs :breadcrumbList="breadcrumbs" />
     </div>
   </section>
+    <template v-if="isLoading">
+        <Loader />
+    </template>
   <template v-if="formattedAboutUsData">
     <section
       ref="el" 

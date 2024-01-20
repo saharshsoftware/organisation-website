@@ -13,6 +13,7 @@ import { getProjectImagesRequest } from "../../services/projectImages";
 import { ROUTE_CONSTANTS } from "../../shared/route";
 import { STRINGS } from "../../shared/constants";
 import BreadCrumbs from "../atoms/BreadCrumbs.vue";
+import Loader from "../atoms/Loader.vue";
 
 const modules = [Autoplay];
 
@@ -24,7 +25,7 @@ const renderMarkdown = (markdown: any) => {
   return md.render(markdown);
 };
 
-const { data: aboutData } = useQuery({
+const { data: aboutData, isLoading } = useQuery({
   queryKey: ["project_image"],
   queryFn: () =>
     getProjectImagesRequest({
@@ -81,6 +82,9 @@ function openLink(url: string) {
       <BreadCrumbs :breadcrumbList="breadcrumbs" />
     </div>
   </section>
+  <template v-if="isLoading || !formattedProjectImage">
+      <Loader />
+  </template>
   <template v-if="formattedProjectImage">
     <section ref="el" class="flex flex-col common-padding gap-8 py-4">
       <div
@@ -138,6 +142,7 @@ function openLink(url: string) {
       </div>
     </section>
   </template>
+
 </template>
 
 <style scoped></style>
