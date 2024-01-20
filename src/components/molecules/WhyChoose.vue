@@ -85,10 +85,10 @@ onMounted(() => {
               "
             />
           </em>
-          <h2 class="text-2xl leading-10 font-normal ">
+          <h2 class="text-[#0a102d] text-left text-2xl ">
             {{ item?.title }}
           </h2>
-          <p class="">{{ item?.description }}</p>
+          <p class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal ">{{ item?.description }}</p>
         </div>
         </div>
       </div>
