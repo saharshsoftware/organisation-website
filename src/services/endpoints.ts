@@ -7,5 +7,7 @@ export const API = {
   FOOTER: "/api/footer",
   TRUSTED_PARTNER: "/api/trusted-partner",
   NAVBAR: "/api/navbar",
-  CONTACT_USER: "/api/contact-users"
+  CONTACT_USER: "/api/contact-users",
+  WHY_CHOOSE_US: "/api/why-choose-us",
+  PROJECT_IMAGE: "/api/project-image"
 }

@@ -26,12 +26,12 @@ const formattedTrustedPartnerData = computed(() => {
       Trusted by Executives &amp; Entrepreneurs from
     </div>
     <div
-      class="gap-8 flex items-center justify-between md:flex-row flex-col relative flex-1 w-full"
+      class="gap-4 flex items-center justify-between md:flex-row flex-col relative flex-1 w-full"
     >
       <img
         v-for="(imageData, index) in formattedTrustedPartnerData?.image"
         :key="index"
-        class="shrink-0 w-[156px] h-[52px] relative"
+        class="w-25 h-10 relative"
         :src="imageData?.url?.data?.attributes?.url"
         alt="partner_image"
       />

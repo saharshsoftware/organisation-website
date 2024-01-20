@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/vue-query";
 import { getHeroSectionRequest } from "../services/herosection";
 
 // components
+import WhyChoose from "../components/molecules/WhyChoose.vue";
 import OurBlogs from "../components/molecules/OurBlogs.vue";
 import JoinTeam from "../components/molecules/JoinTeam.vue";
 import TrustedPartner from "../components/molecules/TrustedPartner.vue";
@@ -63,6 +64,7 @@ onMounted(() => {
   <TrustedPartner />
   <Testimonial />
   <JoinTeam />
+  <WhyChoose />
   <OurBlogs :isLandingPage="true" />
 </template>
 
