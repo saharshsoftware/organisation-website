@@ -94,10 +94,13 @@ function openLink(url: string) {
         <div
           class="rounded-[30px] flex lg:flex-row flex-col items-center justify-between shrink-0 w-full relative gap-4 mb-4"
         >
+        <div class='flex items-center flex-row gap-4'>
           <div
             class="text-[#0e163d] text-center text-3xl leading-6 heading font-normal relative"
           >
             {{ item?.project_name }}
+          </div>
+            <div class="badge mb-2 p-4 bg-[#E3D3E4] text-black">{{ item.client }}</div>
           </div>
           <div
             v-if='item?.project_link'
@@ -108,8 +111,7 @@ function openLink(url: string) {
               class="text-[#0e163d] text-center text-base leading-[22px] font-bold relative break-all"
             >
               {{ item?.project_link }}
-            </div>
-          </div>
+          </div></div>
         </div>
         <div
             v-if="item?.project_desc"
