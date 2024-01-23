@@ -88,11 +88,11 @@ onMounted(() => {
         class="flex lg:flex-row flex-col items-center justify-between self-stretch relative"
       >
         <div
-          class="px-20 py-16 flex flex-col items-center justify-between self-stretch flex-1 relative"
+          class="common-padding py-16 flex flex-col items-center justify-between self-stretch flex-1 relative"
         >
           <div
             ref="lifeDiv"
-            class="pt-20 pb-20 flex flex-col gap-[30px] items-start justify-center self-stretch shrink-0 h-[402px] relative overflow-hidden"
+            class="py-16 flex flex-col gap-[30px] items-start justify-center self-stretch shrink-0 relative "
           >
             <div
               class="text-[#414562] text-left  text-[25px] leading-[38px] font-normal relative self-stretch"

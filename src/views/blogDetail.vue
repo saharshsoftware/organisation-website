@@ -6,7 +6,7 @@ import { ROUTE_CONSTANTS } from "../shared/route";
 import BreadCrumbs from "../components/atoms/BreadCrumbs.vue";
 import Loader from "../components/atoms/Loader.vue";
 import { IMAGES } from "../shared/images";
-import { ref, watch } from "vue";
+import { ref, computed } from "vue";
 import MarkdownIt from 'markdown-it';
 
 const renderMarkdown = (markdown: any) => {
@@ -18,7 +18,6 @@ const renderMarkdown = (markdown: any) => {
 };
 
 const route = useRoute();
-let blogDataRef = ref<any>(null);
 
 const { isLoading, data: blogData } = useQuery({
   queryKey: ["blog-detail", route.params?.id],
@@ -32,16 +31,14 @@ const breadcrumbs = ref([
   { label: "Blogs", link: ROUTE_CONSTANTS.BLOG },
 ]);
 
-watch(blogData, (newValue) => {
-  blogDataRef.value = newValue.data;
+const formattedProjectImage = computed(() => {
+  return blogData.value?.data?.attributes ?? {};
 });
-
-
 
 </script>
 
 <template>
-  <template v-if="isLoading || !blogDataRef?.attributes">
+  <template v-if="isLoading || !formattedProjectImage">
     <Loader />
   </template>
   <template v-else>
@@ -52,30 +49,26 @@ watch(blogData, (newValue) => {
       </div>
     </section>
     <div
-      class="flex flex-col gap-4 items-start justify-start relative common-padding py-6 auto bg-[#F2F7F9]"
+      class="flex flex-col gap-4 items-start justify-start relative common-padding lg:w-3/5 py-6 mx-auto "
     >
-      <em class="h-96 w-full">
+      <div
+        class="text-[#0a102d] text-left text-4xl relative self-stretch font-normal"
+      >
+        {{ formattedProjectImage?.title }}
+      </div>
+      <em class=" w-full">
         <img
-          class="w-full h-full bg-contain relative rounded-lg"
+          class="w-full h-full object-contain relative rounded-lg mx-auto"
           :src="
-            blogDataRef?.attributes?.image?.data?.attributes?.url ??
+            formattedProjectImage?.image?.data?.attributes?.url ??
             IMAGES.imagePlaceholder
           "
         />
       </em>
-      <div
-        class="text-[#0a102d] text-left text-2xl relative self-stretch font-normal"
-      >
-        {{ blogDataRef?.attributes?.title }}
-      </div>
-      <!-- <div
-        class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class"
-        v-html="renderHTML(blogDataRef?.attributes?.desc)"
-      ></div> -->
 
         <div
-          class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class"
-          v-html="renderMarkdown(blogDataRef?.attributes?.description)"
+          class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"
+          v-html="renderMarkdown(formattedProjectImage?.description)"
         >
       </div>
        

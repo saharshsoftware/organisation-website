@@ -39,11 +39,13 @@ const formattedProjectImage = computed(() => {
 
 const el = ref(null);
 const isTablet = ref(false);
+const isDesktop = ref(false);
 
 useResizeObserver(el, (entries) => {
   const entry = entries[0];
   const { width } = entry.contentRect;
   isTablet.value = width > 768;
+  isDesktop.value = width > 1024;
   console.log(isTablet.value);
 });
 
@@ -115,12 +117,14 @@ function openLink(url: string) {
         </div>
         <div
             v-if="item?.project_desc"
-            class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class"
+            class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"
             v-html="renderMarkdown(item?.project_desc)"
           ></div>
         <swiper
           :modules="modules"
           :loop="true"
+          :space-between="30"
+          :slides-per-view="isDesktop ? 3 : (isTablet ? 2 : 1)"
           :pagination="{ clickable: true }"
           :autoplay="{ delay: 3500, disableOnInteraction: false }"
         >
@@ -134,7 +138,7 @@ function openLink(url: string) {
                   class="mt-6 flex items-center justify-center space-x-3"
                 ></figcaption>
                 <img
-                  class="bg-contain mx-auto border border-[#e3e3e3] shadow-md max-h-[70vh]"
+                  class="bg-contain mx-auto border border-[#e3e3e3] shadow-md max-h-[50vh]"
                   alt="profile picture "
                   :src="p_image.attributes.url"
                 />
