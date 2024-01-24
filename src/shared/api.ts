@@ -19,7 +19,7 @@ const fetchData = async (
   const config: RequestOptions = {
     headers: {
       "Content-Type": "application/json",
-      "ngrok-skip-browser-warning": '69420',
+      // "ngrok-skip-browser-warning": '69420',
       // Add any other headers as needed
     },
     ...options,
