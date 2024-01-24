@@ -1,10 +1,22 @@
 <script setup lang="ts">
 import { useVuelidate } from "@vuelidate/core";
 import { required, email } from "@vuelidate/validators";
-import { reactive } from "vue";
+import { reactive, computed } from "vue";
 import InputComponent from "./InputComponent.vue";
-import { useMutation } from "@tanstack/vue-query";
-import { createContactUserRequest } from "../../services/contactUser";
+import { useMutation, useQuery } from "@tanstack/vue-query";
+import { createContactUserRequest, getContactUsMessageRequest } from "../../services/contactUser";
+
+const { data: contactMessage } = useQuery({
+  queryKey: ["contact-us-message"],
+  queryFn: () =>
+    getContactUsMessageRequest({ params: { populate: "*" } }),
+});
+
+const formattedContactMessage = computed(() => {
+  return contactMessage.value?.data?.attributes ?? {};
+});
+
+console.log(formattedContactMessage.value, "formattedContactMessage")
 
 const formData = reactive<any>({
   email: "",

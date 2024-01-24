@@ -9,5 +9,6 @@ export const API = {
   NAVBAR: "/api/navbar",
   CONTACT_USER: "/api/contact-users",
   WHY_CHOOSE_US: "/api/why-choose-us",
-  PROJECT_IMAGE: "/api/project-image"
+  PROJECT_IMAGE: "/api/project-image",
+  CONTACT_US: "/api/contact-us"
 }
