@@ -139,7 +139,7 @@ const formattedFooterData = computed(() => {
       <div
         class="text-[#7a7a7a] text-left text-sm leading-[25.6px] font-normal relative"
       >
-        © 2023
+        © {{new Date().getFullYear()}}
       </div>
       <div
         class="text-white text-center text-sm leading-[25.6px] font-normal relative"
