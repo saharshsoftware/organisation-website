@@ -19,7 +19,9 @@ const fetchData = async (
   const config: RequestOptions = {
     headers: {
       "Content-Type": "application/json",
-      // "ngrok-skip-browser-warning": '69420',
+      // "Access-Control-Allow-Origin": "*",
+      // "Access-Control-Allow-Headers": 'Accept',
+      "ngrok-skip-browser-warning": '69420',
       // Add any other headers as needed
     },
     ...options,

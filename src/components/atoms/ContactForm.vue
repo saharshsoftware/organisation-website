@@ -1,22 +1,20 @@
 <script setup lang="ts">
 import { useVuelidate } from "@vuelidate/core";
 import { required, email } from "@vuelidate/validators";
-import { reactive } from "vue";
+import { computed, reactive } from "vue";
 import InputComponent from "./InputComponent.vue";
-import { useMutation } from "@tanstack/vue-query";
-import { createContactUserRequest } from "../../services/contactUser";
+import { useMutation, useQuery } from "@tanstack/vue-query";
+import { createContactUserRequest, getContactUsMessageRequest } from "../../services/contactUser";
 
-// const { data: contactMessage } = useQuery({
-//   queryKey: ["contact-us-message"],
-//   queryFn: () =>
-//     getContactUsMessageRequest({ params: { populate: "*" } }),
-// });
+const { data: contactMessage } = useQuery({
+  queryKey: ["contact-us-message"],
+  queryFn: () =>
+    getContactUsMessageRequest({ params: { populate: "*" } }),
+});
 
-// const formattedContactMessage = computed(() => {
-//   return contactMessage.value?.data?.attributes ?? {};
-// });
-
-// console.log(formattedContactMessage.value, "formattedContactMessage")
+const formattedContactMessage = computed(() => {
+  return contactMessage.value?.data?.attributes ?? {};
+});
 
 const formData = reactive<any>({
   email: "",
@@ -27,7 +25,6 @@ const formData = reactive<any>({
 
 const resetForm = () => {
   formData.email = ""
-  formData.username=  ""
   formData.subject=  "",
   formData.message = ""
 }
@@ -38,9 +35,6 @@ const rules = {
     email
   },
 
-  username: {
-    required,
-  },
   subject: {
     required,
   },
@@ -84,8 +78,7 @@ const addContactUser = async () => {
     <div
       class="text-[#000000] text-left text-[22px] leading-[30px] font-normal relative self-stretch"
     >
-      Thank you for your interest in Saharsh Software. Please fill out the form
-      below to ask a question or report a technical problem..
+      {{ formattedContactMessage.message }}
     </div>
     <div
       class="text-[#070c21] text-left text-[38px] leading-[54px] font-normal relative"
@@ -95,7 +88,7 @@ const addContactUser = async () => {
     <div
       class="grid grid-cols-12 gap-2 items-start justify-start self-stretch shrink-0 relative"
     >
-      <div class="mg:col-start-1 md:col-end-7 col-span-full">
+      <div class="col-span-full">
         <InputComponent
           v-model="formData.email"
           placeholder="Enter your email"
@@ -105,15 +98,6 @@ const addContactUser = async () => {
           />
       </div>
 
-      <div class="md:col-start-7 md:col-end-13 col-span-full">
-        <InputComponent
-          v-model="formData.username"
-          placeholder="Enter your username"
-          label="Username"
-          type="test"
-          :errorMessage="v$?.username?.$error ? v$?.username?.$errors?.[0]?.$message : ''"
-          />
-      </div>
       <div class="col-span-full">
         <InputComponent
           v-model="formData.subject"
