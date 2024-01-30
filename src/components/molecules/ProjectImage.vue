@@ -1,10 +1,6 @@
 <script setup lang="ts">
-import { useResizeObserver } from "@vueuse/core";
 import { computed, onMounted, ref } from "vue";
 import { useQuery } from "@tanstack/vue-query";
-
-import "swiper/css";
-import "swiper/css/pagination";
 
 // sercices
 import { getProjectImagesRequest } from "../../services/projectImages";
@@ -15,30 +11,23 @@ import { STRINGS } from "../../shared/constants";
 import BreadCrumbs from "../atoms/BreadCrumbs.vue";
 import Loader from "../atoms/Loader.vue";
 import CustomTable from "../atoms/CustomTable.vue";
+import { useRouter } from "vue-router";
 
+const router = useRouter();
 const { data: aboutData, isLoading } = useQuery({
   queryKey: ["project_image"],
   queryFn: () =>
     getProjectImagesRequest({
-      params: { populate: "client_projects.project_image" },
+      params: { populate: "" },
     }),
 });
 
 const formattedProjectImage = computed(() => {
-  return aboutData.value?.data?.attributes ?? {};
+  return aboutData.value?.data ?? {};
 });
 
 const el = ref(null);
-const isTablet = ref(false);
-const isDesktop = ref(false);
 
-useResizeObserver(el, (entries) => {
-  const entry = entries[0];
-  const { width } = entry.contentRect;
-  isTablet.value = width > 768;
-  isDesktop.value = width > 1024;
-  console.log(isTablet.value);
-});
 
 const breadCrumb = ref<any>();
 
@@ -68,6 +57,11 @@ function openLink(url: string) {
   window.open(url, "_blank");
 }
 
+const onProjectClick = (data: any) => {
+  const { id } = data;
+  console.log(data, id)
+  router.push(ROUTE_CONSTANTS.PROJECTS + "/" + id);
+};
 </script>
 <template>
   <section class="common-padding py-9 relative bg-primary-color">
@@ -80,32 +74,29 @@ function openLink(url: string) {
     <Loader />
   </template>
   <template v-if="formattedProjectImage">
-    <!-- <section ref="el" class="flex flex-col common-padding gap-8 py-4">
-      <div v-for="(item, index) in formattedProjectImage?.client_projects" :key="index">
-        <DisplayProjectInfo :item="item" :isDesktop="isDesktop" :isTablet="isTablet" />
-      </div>
-    </section> -->
-    <section ref="el" class="flex flex-col common-padding gap-8 py-4">
 
-    <CustomTable
-      :tableHeader="['Project', 'Client', 'Live URL']"
-      :tableData="[...formattedProjectImage?.client_projects]"
-    >
-      <!-- Custom template for tbody rows -->
-      <template v-slot:tbodyRow="{ row }">
-        <tr>
-          <td class="common-td">{{ row.project_name }}</td>
-          <td class="common-td" >{{ row.client }}</td>
-          <td class="link link-primary common-td" @click="() => openLink(row?.project_link)"> Link</td>
-          <!-- <td>{{ row.location }}</td>
-          <td>{{ row.lastLogin }}</td>
-          <td>{{ row.favoriteColor }}</td> -->
-          <!-- Add more customizations as needed -->
-        </tr>
-      </template>
-    </CustomTable>
+    <section ref="el" class="flex flex-col common-padding gap-8 py-4">
+      <CustomTable
+        :tableHeader="['Project', 'Client', 'Live URL', 'Details']"
+        :tableData="formattedProjectImage"
+      >
+        <template v-slot:tbodyRow="{ row }">
+          <tr>
+            <td class="common-td">{{ row.attributes?.project_name }}</td>
+            <td class="common-td">{{ row.attributes?.client }}</td>
+            <td
+              class="link link-primary common-td"
+              @click="() => openLink(row?.attributes?.project_link)"
+            >
+              <a class="link link-primary"> Link </a>
+            </td>
+            <td class="common-td" @click="() => onProjectClick(row)">
+              <a class="link link-primary"> Read More </a>
+            </td>
+          </tr>
+        </template>
+      </CustomTable>
     </section>
-    
   </template>
 </template>
 

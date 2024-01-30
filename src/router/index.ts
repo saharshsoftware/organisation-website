@@ -31,7 +31,14 @@ const router = createRouter({
     },
     {
       path: `${ROUTE_CONSTANTS.BLOG}/:id`,
+      name: "blog-detail-route",
       component: () => import("../views/blogDetail.vue"),
+      props: (route) => ({ id: route.params.id }),
+    },
+    {
+      path: `${ROUTE_CONSTANTS.PROJECTS}/:id`,
+      name: "project-detail-route",
+      component: () => import("../views/projectDetail.vue"),
       props: (route) => ({ id: route.params.id }),
     },
   ],

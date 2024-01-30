@@ -5,6 +5,9 @@ import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 import { Autoplay } from "swiper/modules";
 import MarkdownIt from "markdown-it";
 
+import "swiper/css";
+import "swiper/css/pagination";
+
 interface Props {
   item: any, isDesktop?: boolean, isTablet?: boolean
 }
@@ -46,7 +49,7 @@ function openLink(url: string) {
     class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"
     v-html="renderMarkdown(item?.project_desc)"></div>
   <swiper :modules="modules" :loop="true" :space-between="30" :pagination="{ clickable: true }"
-    :slides-per-view="isDesktop ? 3 : (isTablet ? 2 : 1)" class="lg:w-3/5 mx-auto">
+    :slides-per-view="isDesktop ? 3 : (isTablet ? 2 : 1)" class="lg:w-3/5 w-full mx-auto">
     <!-- :autoplay="{ delay: 3500, disableOnInteraction: false }" -->
     <swiper-slide v-for="p_image in item?.project_image?.data" :key="p_image.id">
       <div class="mx-auto text-center mb-4">

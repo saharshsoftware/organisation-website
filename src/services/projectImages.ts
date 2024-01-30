@@ -11,3 +11,8 @@ export const getProjectImagesRequest = ({ params }: IGetSessions) => {
   return getRequest(URL, params);
 };
 
+export const getProjectDetail = ({ params, id }: IGetSessions) => {
+  const URL = API.PROJECT_IMAGE+"/"+id ;
+  return getRequest(URL, params);
+};
+
