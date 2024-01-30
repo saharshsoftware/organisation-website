@@ -157,3 +157,7 @@ textarea:focus-visible {
     object-fit: contain;
   }
 }
+
+.common-td {
+  @apply text-center p-4
+}
