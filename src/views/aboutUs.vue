@@ -12,6 +12,7 @@ import {computed, onMounted, ref } from "vue";
 
 import { useQuery } from "@tanstack/vue-query";
 import { getAboutUsRequest } from "../services/aboutus";
+import Loader from "../components/atoms/Loader.vue";
 
 
 const renderMarkdown = (markdown: any) => {
@@ -73,10 +74,12 @@ const breadcrumbs = [
       <BreadCrumbs :breadcrumbList="breadcrumbs" />
     </div>
   </section>
-    <template v-if="isLoading">
+    <template v-if="isLoading || !formattedAboutUsData">
+      <div class="w-full">
         <Loader />
+      </div>
     </template>
-  <template v-if="formattedAboutUsData">
+  <template v-else>
     <section
       ref="el" 
       class="flex flex-col common-padding gap-8 py-4 "
@@ -94,105 +97,7 @@ const breadcrumbs = [
           </div>
           </section>
   </template>
-  <!-- <div class="m-auto" id="abc">
-    <TwoSectionComponent
-      :classLeft="'flex items-start justify-center text-pretty flex-col gap-4'"
-      :classRight="'text-white bg-priamry-color bg-no-repeat bg-center bg-cover'"
-    >
-      <template #left>
-        <h1 class="text-5xl heading">Our Mission</h1>
-
-        <p class="">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam nobis
-          molestias minus ipsam quos doloremque debitis vero sed est laboriosam
-          illo atque eligendi excepturi autem numquam ex maxime, enim in dicta
-          inventore architecto nihil molestiae provident? Amet a animi, porro et
-          quaerat dolorum quibusdam quas reiciendis vitae praesentium ex.
-          Fugiat!
-        </p>
-        <ul class="list-disc ms-5">
-          <li>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis
-            amet unde inventore rerum accusamus enim repellendus iusto vero
-            doloremque aperiam eum soluta voluptates ab
-          </li>
-          <li>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis
-            amet unde inventore rerum accusamus enim repellendus iusto vero
-            doloremque aperiam eum soluta voluptates ab step.
-          </li>
-        </ul>
-      </template>
-      <template #right>
-        <img class="relative h-full" :src="IMAGES.mission" />
-      </template>
-    </TwoSectionComponent>
-    <TwoSectionComponent
-      :isReverse="true"
-      :classLeft="'flex items-start justify-center text-pretty flex-col gap-4'"
-      :classRight="'text-white bg-priamry-color bg-no-repeat bg-center bg-cover'"
-    >
-      <template #left>
-        <h1 class="text-5xl heading">Our Vision</h1>
-
-        <p class="">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam nobis
-          molestias minus ipsam quos doloremque debitis vero sed est laboriosam
-          illo atque eligendi excepturi autem numquam ex maxime, enim in dicta
-          inventore architecto nihil molestiae provident? Amet a animi, porro et
-          quaerat dolorum quibusdam quas reiciendis vitae praesentium ex.
-          Fugiat!
-        </p>
-        <ul class="list-disc ms-5">
-          <li>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis
-            amet unde inventore rerum accusamus enim repellendus iusto vero
-            doloremque aperiam eum soluta voluptates ab
-          </li>
-          <li>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis
-            amet unde inventore rerum accusamus enim repellendus iusto vero
-            doloremque aperiam eum soluta voluptates ab step.
-          </li>
-        </ul>
-      </template>
-      <template #right>
-        <img class="relative h-full" :src="IMAGES.lappy" />
-      </template>
-    </TwoSectionComponent>
-    <TwoSectionComponent
-      :classLeft="'flex items-start justify-center text-pretty flex-col gap-4'"
-      :classRight="'text-white bg-priamry-color bg-no-repeat bg-center bg-cover'"
-    >
-      <template #left>
-        <h1 class="text-5xl heading">Team Members</h1>
-
-        <p class="">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam nobis
-          molestias minus ipsam quos doloremque debitis vero sed est laboriosam
-          illo atque eligendi excepturi autem numquam ex maxime, enim in dicta
-          inventore architecto nihil molestiae provident? Amet a animi, porro et
-          quaerat dolorum quibusdam quas reiciendis vitae praesentium ex.
-          Fugiat!
-        </p>
-        <ul class="list-disc ms-5">
-          <li>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis
-            amet unde inventore rerum accusamus enim repellendus iusto vero
-            doloremque aperiam eum soluta voluptates ab
-          </li>
-          <li>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis
-            amet unde inventore rerum accusamus enim repellendus iusto vero
-            doloremque aperiam eum soluta voluptates ab step.
-          </li>
-        </ul>
-      </template>
-      <template #right>
-        <img class="relative h-full" :src="IMAGES.aboutImg" />
-      </template>
-    </TwoSectionComponent>
-  </div> -->
+ 
 </template>
 
 <style scoped></style>

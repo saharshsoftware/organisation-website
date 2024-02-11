@@ -38,19 +38,21 @@ const formattedProjectImage = computed(() => {
 </script>
 
 <template>
-  <template v-if="isLoading || !formattedProjectImage">
-    <Loader />
-  </template>
-  <template v-else>
-    <section class="common-padding py-9 relative bg-primary-color">
-      <div class="text-white flex flex-col items-start justify-between gap-5">
-        <h2 class="text-3xl" ref="breadCrumb">Blogs</h2>
-        <BreadCrumbs :breadcrumbList="breadcrumbs" />
-      </div>
-    </section>
-    <div
+  <section class="common-padding py-9 relative bg-primary-color">
+    <div class="text-white flex flex-col items-start justify-between gap-5">
+      <h2 class="text-3xl" ref="breadCrumb">Blogs</h2>
+      <BreadCrumbs :breadcrumbList="breadcrumbs" />
+    </div>
+  </section>
+  <div
       class="flex flex-col gap-4 items-start justify-start relative common-padding lg:w-3/5 py-6 mx-auto "
     >
+  <template v-if="isLoading || !formattedProjectImage">
+    <div class="w-full">
+      <Loader />
+    </div>
+  </template>
+  <template v-else>
       <div
         class="text-[#0a102d] text-left text-4xl relative self-stretch font-normal"
       >
@@ -72,8 +74,8 @@ const formattedProjectImage = computed(() => {
         >
       </div>
        
+    </template>
     </div>
-  </template>
 </template>
 
 <style scoped>

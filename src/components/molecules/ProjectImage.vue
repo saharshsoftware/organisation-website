@@ -73,7 +73,7 @@ const onProjectClick = (data: any) => {
   <template v-if="isLoading || !formattedProjectImage">
     <Loader />
   </template>
-  <template v-if="formattedProjectImage">
+  <template v-else>
 
     <section ref="el" class="flex flex-col common-padding gap-8 py-4">
       <CustomTable

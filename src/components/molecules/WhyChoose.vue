@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/vue-query";
 // services
 import { getWhyChooseRequest } from "../../services/whychooseus";
 import { IMAGES } from "../../shared/images";
+import Loader from "../atoms/Loader.vue";
 
 const whyChooseSection = ref<any>();
 
@@ -68,7 +69,7 @@ onMounted(() => {
       </span>
     </div>
     <template v-if="isLoading || !formattedWhyChooseData?.info?.length">
-      <div class="text-center" v-if="isLoading">Loading...</div>
+      <div class="text-center" v-if="isLoading"><Loader /></div>
     </template>
     <template v-else>
       <div class="grid lg:grid-cols-3 gap-4">

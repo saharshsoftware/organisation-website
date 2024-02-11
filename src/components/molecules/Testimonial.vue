@@ -15,6 +15,7 @@ import { getTestimonials } from "../../services/testimonial";
 
 // components
 import CommonTestimonial from "../atoms/CommonTestimonial.vue";
+import Loader from "../atoms/Loader.vue";
 
 const trustedSection = ref<any>();
 const modules = [Autoplay];
@@ -74,7 +75,7 @@ onMounted(() => {
       </span>
     </div>
     <template v-if="isLoading || !testimonialData?.data?.length">
-      <div class="text-center" v-if="isLoading">Loading...</div>
+      <div class="text-center" v-if="isLoading"><Loader /></div>
     </template>
     <template v-else>
       <swiper

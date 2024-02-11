@@ -5,7 +5,7 @@ import { getBlogs } from "../../services/blogs";
 import { useRouter } from "vue-router";
 import { ROUTE_CONSTANTS } from "../../shared/route";
 import CommonBlogCard from "../atoms/CommonBlogCard.vue";
-import Loader from "../atoms/Loader.vue";
+import BlogSkeleton from "../molecules/skeltons/BlogSkelton.vue"
 
 interface Props {
   isLandingPage?: boolean;
@@ -75,8 +75,10 @@ onMounted(() => {
     class="flex flex-col gap-4 justify-start relative common-padding py-6 auto bg-[#F2F7F9]"
   >
     <template v-if="isLoading || !blogsData?.data?.length">
-      <div class="text-center">
-        <Loader />
+      <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-4">
+        <div v-for="index in 5" :key="index" class="py-4">
+          <BlogSkeleton />
+        </div>
       </div>
     </template>
     <template v-else>

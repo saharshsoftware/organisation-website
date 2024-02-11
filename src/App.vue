@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import Header from './components/molecules/Header.vue';
-import Footer from './components/molecules/Footer.vue'
-
-</script>
 
 <template>
   <div class="flex flex-col min-h-screen">
@@ -10,8 +5,14 @@ import Footer from './components/molecules/Footer.vue'
       <div class="flex-1">
         <RouterView />
       </div>
-      <Footer />
     </div>
-</template>
+    <Footer />
+  </template>
+<script setup lang="ts">
+import Header from './components/molecules/Header.vue';
+import Footer from './components/molecules/Footer.vue'
+import { RouterView } from 'vue-router';
+
+</script>
 
 <style scoped></style>

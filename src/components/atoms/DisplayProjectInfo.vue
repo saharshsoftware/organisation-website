@@ -12,7 +12,7 @@ interface Props {
   item: any, isDesktop?: boolean, isTablet?: boolean
 }
 const props = defineProps<Props>()
-const { item, isTablet, isDesktop } = toRefs(props)
+const { item } = toRefs(props)
 
 const modules = [Autoplay];
 
@@ -49,13 +49,13 @@ function openLink(url: string) {
     class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"
     v-html="renderMarkdown(item?.project_desc)"></div>
   <swiper :modules="modules" :loop="true" :space-between="30" :pagination="{ clickable: true }"
-    :slides-per-view="isDesktop ? 3 : (isTablet ? 2 : 1)" class="lg:w-3/5 w-full mx-auto">
+    :slides-per-view="1" class="lg:w-3/5 w-full mx-auto">
     <!-- :autoplay="{ delay: 3500, disableOnInteraction: false }" -->
     <swiper-slide v-for="p_image in item?.project_image?.data" :key="p_image.id">
       <div class="mx-auto text-center mb-4">
         <figure class="mx-auto">
           <figcaption class="mt-6 flex items-center justify-center space-x-3"></figcaption>
-          <img class="bg-contain mx-auto border border-[#e3e3e3] shadow-md max-h-[25vh]" alt="profile picture "
+          <img class="bg-contain mx-auto border border-[#e3e3e3] shadow-md max-h-[60vh]" alt="profile picture "
             :src="p_image.attributes.url" />
         </figure>
       </div>
