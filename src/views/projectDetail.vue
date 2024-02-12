@@ -28,6 +28,10 @@ const breadcrumbs = ref([
 ]);
 
 const formattedProjectImage = computed(() => {
+  breadcrumbs.value.push({
+    label: blogData.value?.data?.attributes?.project_name ?? "",
+    link: ROUTE_CONSTANTS.PROJECTS + "/" + blogData.value?.data?.id,
+  });
   return blogData.value?.data?.attributes ?? {};
 });
 

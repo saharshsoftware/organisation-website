@@ -3,7 +3,7 @@ import { computed, onMounted, ref } from "vue";
 import { useQuery } from "@tanstack/vue-query";
 
 // sercices
-import { getProjectImagesRequest } from "../../services/projectImages";
+import { getParentProjectImagesRequest } from "../../services/projectImages";
 import { ROUTE_CONSTANTS } from "../../shared/route";
 import { STRINGS } from "../../shared/constants";
 
@@ -14,16 +14,16 @@ import CustomTable from "../atoms/CustomTable.vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
-const { data: aboutData, isLoading } = useQuery({
-  queryKey: ["project_image"],
+const { data: parentProjects, isLoading } = useQuery({
+  queryKey: ["parent_projects"],
   queryFn: () =>
-    getProjectImagesRequest({
-      params: { populate: "" },
+    getParentProjectImagesRequest({
+      params: { populate: "*" },
     }),
 });
 
-const formattedProjectImage = computed(() => {
-  return aboutData.value?.data ?? {};
+const formattedParentProject = computed(() => {
+  return parentProjects.value?.data ?? {};
 });
 
 const el = ref(null);
@@ -53,14 +53,10 @@ const breadcrumbs = [
   { label: STRINGS.PROJECTS, link: ROUTE_CONSTANTS.PROJECTS },
 ];
 
-function openLink(url: string) {
-  window.open(url, "_blank");
-}
-
 const onProjectClick = (data: any) => {
   const { id } = data;
   console.log(data, id)
-  router.push(ROUTE_CONSTANTS.PROJECTS + "/" + id);
+  router.push(ROUTE_CONSTANTS.PROJECT_MODULES + "/" + id);
 };
 </script>
 <template>
@@ -70,26 +66,20 @@ const onProjectClick = (data: any) => {
       <BreadCrumbs :breadcrumbList="breadcrumbs" />
     </div>
   </section>
-  <template v-if="isLoading || !formattedProjectImage">
+  <template v-if="isLoading || !formattedParentProject">
     <Loader />
   </template>
   <template v-else>
 
     <section ref="el" class="flex flex-col common-padding gap-8 py-4">
       <CustomTable
-        :tableHeader="['Project', 'Client', 'Live URL', 'Details']"
-        :tableData="formattedProjectImage"
+        :tableHeader="['Client', 'Total Modules', 'Details']"
+        :tableData="formattedParentProject"
       >
         <template v-slot:tbodyRow="{ row }">
           <tr>
-            <td class="common-td">{{ row.attributes?.project_name }}</td>
-            <td class="common-td">{{ row.attributes?.client }}</td>
-            <td
-              class="link link-primary common-td"
-              @click="() => openLink(row?.attributes?.project_link)"
-            >
-              <a class="link link-primary"> Link </a>
-            </td>
+            <td class="common-td">{{ row.attributes?.label }}</td>
+            <td class="common-td">{{ row.attributes?.organisation_projects?.data?.length }}</td>
             <td class="common-td" @click="() => onProjectClick(row)">
               <a class="link link-primary"> Read More </a>
             </td>

@@ -3,5 +3,7 @@ export const ROUTE_CONSTANTS = {
   CONTACT_US: "/contact-us",
   BLOG: "/blogs",
   ABOUT: "/about-us",
-  PROJECTS: "/projects"
+  PROJECTS: "/projects",
+  PROJECT_MODULES: "/project/modules",
+  PROJECT_MODULE_DETAIL: "/project/module/details"
 }

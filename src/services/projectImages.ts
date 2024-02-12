@@ -16,3 +16,12 @@ export const getProjectDetail = ({ params, id }: IGetSessions) => {
   return getRequest(URL, params);
 };
 
+export const getParentProjectImagesRequest = ({ params }: IGetSessions) => {
+  const URL = API.PARENT_PROJECTS ;
+  return getRequest(URL, params);
+};
+
+export const getParentProjectDetail = ({ params, id }: IGetSessions) => {
+  const URL = API.PARENT_PROJECTS+"/"+id ;
+  return getRequest(URL, params);
+};

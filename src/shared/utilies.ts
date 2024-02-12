@@ -59,3 +59,12 @@ const renderList = (list: any) => {
     list.format === "ordered" ? "ol" : "ul"
   }>`;
 };
+
+export const handleQueryResponse = (res: any) => {
+  if (res?.message) {
+    console.log(res.response)
+    throw new Error(res?.message);
+  } else {
+    return res;
+  }
+}

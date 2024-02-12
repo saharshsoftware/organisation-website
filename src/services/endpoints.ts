@@ -11,5 +11,6 @@ export const API = {
   WHY_CHOOSE_US: "/api/why-choose-us",
   // PROJECT_IMAGE: "/api/project-image",
   PROJECT_IMAGE: "/api/organisation-projects",
-  CONTACT_US: "/api/contact-us"
+  CONTACT_US: "/api/contact-us",
+  PARENT_PROJECTS: "/api/parent-projects"
 }

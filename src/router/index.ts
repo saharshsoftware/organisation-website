@@ -41,6 +41,18 @@ const router = createRouter({
       component: () => import("../views/projectDetail.vue"),
       props: (route) => ({ id: route.params.id }),
     },
+    {
+      path: `${ROUTE_CONSTANTS.PROJECT_MODULES}/:id`,
+      name: "project-modulese",
+      component: () => import("../views/projectModules.vue"),
+      props: (route) => ({ id: route.params.id }),
+    },
+    {
+      path: `${ROUTE_CONSTANTS.PROJECT_MODULE_DETAIL}/:id`,
+      name: "project-module-details",
+      component: () => import("../views/projectModuleDetails.vue"),
+      props: (route) => ({ id: route.params.id }),
+    },
   ],
 });
 
