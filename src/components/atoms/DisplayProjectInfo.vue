@@ -57,6 +57,7 @@ function openLink(url: string) {
       </div>
     </div>
   </div>
+  <div v-if="item.techstack"><strong>Tech Stack:</strong> {{ item.techstack ?? "-" }}</div>
   <div
     v-if="item?.project_desc"
     class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"

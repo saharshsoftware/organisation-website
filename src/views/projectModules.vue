@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, ref } from "vue";
 import { useQuery } from "@tanstack/vue-query";
+import MarkdownIt from "markdown-it";
 
 // sercices
 import { getParentProjectDetail } from "../services/projectImages";
@@ -14,6 +15,14 @@ import { useRoute, useRouter } from "vue-router";
 
 const router = useRouter();
 const route = useRoute();
+
+const renderMarkdown = (markdown: any) => {
+  const md = new MarkdownIt({
+    html: true,
+    linkify: true,
+  });
+  return md.render(markdown);
+};
 
 const { data: projectModules, isLoading } = useQuery({
   queryKey: ["project_modules"],
@@ -72,14 +81,28 @@ onBeforeUnmount(() => {
   <template v-else>
     <section ref="el" class="flex flex-col common-padding gap-8 py-4">
       <CustomTable
-        :tableHeader="['Modules', 'Link', 'Details']"
+        :tableHeader="['Modules', 'Tech Stack', 'Description', 'Link', 'Details']"
         :tableData="
           formattedProjectModules?.attributes?.organisation_projects?.data
         "
       >
         <template v-slot:tbodyRow="{ row }">
           <tr>
-            <td class="common-td">{{ row.attributes?.project_name }}</td>
+            <td class="common-td ">{{ row.attributes?.project_name ?? "-" }}</td>
+            <td class="common-td">{{ row.attributes?.techstack ?? "-" }}</td>
+            <td class="common-td">
+              <template v-if="row.attributes?.project_desc">
+                <div
+                v-if="row.attributes?.project_desc"
+                class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"
+                v-html="renderMarkdown(row.attributes?.project_desc)"
+                ></div>
+              </template>
+              <template v-else>
+                -
+              </template>
+
+            </td>
             <template v-if="row?.attributes?.project_link">
               <td
                 class="link link-primary common-td"

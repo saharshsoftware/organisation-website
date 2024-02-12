@@ -176,5 +176,5 @@ textarea:focus-visible {
 }
 
 .common-td {
-  @apply text-center p-4
+  @apply text-center p-4 min-w-48
 }
