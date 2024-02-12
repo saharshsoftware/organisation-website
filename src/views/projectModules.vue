@@ -87,7 +87,7 @@ onBeforeUnmount(() => {
               <a class="link link-primary"> Link </a>
             </td>
             <td class="common-td" @click="() => onProjectClick(row)">
-              <a class="link link-primary"> Know More </a>
+              <a class="link link-primary"> Read More </a>
             </td>
           </tr>
         </template>

@@ -2,11 +2,12 @@
 import { toRefs } from "vue";
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 // @ts-ignore
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import MarkdownIt from "markdown-it";
 
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/bundle";
 
 interface Props {
   item: any;
@@ -16,7 +17,7 @@ interface Props {
 const props = defineProps<Props>();
 const { item } = toRefs(props);
 
-const modules = [Autoplay];
+const modules = [Autoplay, Navigation];
 
 const renderMarkdown = (markdown: any) => {
   const md = new MarkdownIt({
@@ -66,6 +67,7 @@ function openLink(url: string) {
     :loop="true"
     :space-between="30"
     :pagination="{ clickable: true }"
+    :navigation="true"
     :autoplay="{ delay: 3500, disableOnInteraction: false }"
     :slides-per-view="1"
     class="lg:w-3/5 w-full mx-auto"
@@ -90,4 +92,9 @@ function openLink(url: string) {
   </swiper>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+.swiper-button-next, .swiper-rtl .swiper-button-prev {
+  color: #e3e3e3;
+}
+</style>
