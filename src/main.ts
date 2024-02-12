@@ -10,9 +10,20 @@ import App from './App.vue'
 
 const app = createApp(App)
 
+const vueQueryPluginOptions = {
+  queryClientConfig: {
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+      },
+    },
+  },
+}
+
+
 // Register the FontAwesome component globally
 app.component('font-awesome-icon', FontAwesomeIcon)
 // app.component('CustomCursor', CustomCursorVue) // Global registration
-app.use(VueQueryPlugin)
+app.use(VueQueryPlugin, vueQueryPluginOptions)
 app.use(router)
 app.mount('#app')
