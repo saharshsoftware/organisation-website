@@ -80,12 +80,16 @@ onBeforeUnmount(() => {
         <template v-slot:tbodyRow="{ row }">
           <tr>
             <td class="common-td">{{ row.attributes?.project_name }}</td>
-            <td
-              class="link link-primary common-td"
-              @click="() => openLink(row?.attributes?.project_link)"
-            >
-              <a class="link link-primary"> Link </a>
-            </td>
+            <template v-if="row?.attributes?.project_link">
+              <td
+                class="link link-primary common-td"
+                @click="() => openLink(row?.attributes?.project_link)"
+              >
+                <a class="link link-primary"> Link </a>
+              </td> </template
+            ><template v-else>
+              <td class="common-td">-</td>
+            </template>
             <td class="common-td" @click="() => onProjectClick(row)">
               <a class="link link-primary"> Read More </a>
             </td>
