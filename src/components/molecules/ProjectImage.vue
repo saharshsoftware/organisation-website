@@ -73,7 +73,7 @@ const onProjectClick = (data: any) => {
 
     <section ref="el" class="flex flex-col common-padding gap-8 py-4">
       <CustomTable
-        :tableHeader="['Client', 'Total Modules', 'Details']"
+        :tableHeader="['Clients', 'Total Modules', 'Details']"
         :tableData="formattedParentProject"
       >
         <template v-slot:tbodyRow="{ row }">
