@@ -27,8 +27,8 @@ const { isLoading, data: blogsData } = useQuery({
 });
 
 const onBlogClick = (data: any) => {
-  const { id } = data;
-  router.push(ROUTE_CONSTANTS.BLOG + "/" + id);
+  const {slug} = data?.attributes
+  router.push(ROUTE_CONSTANTS.BLOG + "/" + slug);
 };
 
 const isVisibleRef = (selector: any) => {

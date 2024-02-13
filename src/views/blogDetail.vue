@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from "vue-router";
 import { useQuery } from "@tanstack/vue-query";
-import { getBlogDetail } from "../services/blogs";
+import { getBlogs } from "../services/blogs";
 import { ROUTE_CONSTANTS } from "../shared/route";
 import BreadCrumbs from "../components/atoms/BreadCrumbs.vue";
 import Loader from "../components/atoms/Loader.vue";
@@ -19,10 +19,9 @@ const renderMarkdown = (markdown: any) => {
 
 const route = useRoute();
 
-const { isLoading, data: blogData } = useQuery({
-  queryKey: ["blog-detail", route.params?.id],
-  queryFn: () =>
-    getBlogDetail({ params: { populate: "*" }, id: route.params?.id }),
+const { isLoading, data: blogsData } = useQuery({
+  queryKey: ["blogs"],
+  queryFn: () => getBlogs({ params: { populate: "*" } }),
   enabled: !!route.params?.id,
 });
 
@@ -31,8 +30,9 @@ const breadcrumbs = ref([
   { label: "Blogs", link: ROUTE_CONSTANTS.BLOG },
 ]);
 
-const formattedProjectImage = computed(() => {
-  return blogData.value?.data?.attributes ?? {};
+const formattedBlogDetails = computed(() => {
+  const blogDetaildata = blogsData.value?.data?.find((item: any) => item?.attributes?.slug === route.params?.id)
+  return blogDetaildata?.attributes ?? {};
 });
 
 </script>
@@ -47,7 +47,7 @@ const formattedProjectImage = computed(() => {
   <div
       class="flex flex-col gap-4 items-start justify-start relative common-padding lg:w-3/5 py-6 mx-auto "
     >
-  <template v-if="isLoading || !formattedProjectImage">
+  <template v-if="isLoading || !formattedBlogDetails">
     <div class="w-full">
       <Loader />
     </div>
@@ -56,13 +56,13 @@ const formattedProjectImage = computed(() => {
       <div
         class="text-[#0a102d] text-left text-4xl relative self-stretch font-normal"
       >
-        {{ formattedProjectImage?.title }}
+        {{ formattedBlogDetails?.title }}
       </div>
       <em class=" w-full">
         <img
           class="w-full h-full object-contain relative rounded-lg mx-auto"
           :src="
-            formattedProjectImage?.image?.data?.attributes?.url ??
+            formattedBlogDetails?.image?.data?.attributes?.url ??
             IMAGES.imagePlaceholder
           "
         />
@@ -70,7 +70,7 @@ const formattedProjectImage = computed(() => {
 
         <div
           class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"
-          v-html="renderMarkdown(formattedProjectImage?.description)"
+          v-html="renderMarkdown(formattedBlogDetails?.description)"
         >
       </div>
        
