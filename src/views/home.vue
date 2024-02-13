@@ -63,8 +63,8 @@ onMounted(() => {
     </div>
   </HeroSectionSlot>
   <TrustedPartner />
-  <WhyChoose />
   <OurOfferings />
+  <WhyChoose />
   <JoinTeam />
   <Testimonial />
   <OurBlogs :isLandingPage="true" />

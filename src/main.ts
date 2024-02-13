@@ -20,6 +20,11 @@ const vueQueryPluginOptions = {
   },
 }
 
+router.beforeEach((to, from, next) => {
+  // Scroll to the top of the page on route change
+  window.scrollTo(0, 0)
+  next()
+})
 
 // Register the FontAwesome component globally
 app.component('font-awesome-icon', FontAwesomeIcon)

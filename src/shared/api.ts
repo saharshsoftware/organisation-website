@@ -21,6 +21,7 @@ const fetchData = async (
       "Content-Type": "application/json",
       // "Access-Control-Allow-Origin": "*",
       // "Access-Control-Allow-Headers": 'Accept',
+      "Retry-After": "3600",
       "ngrok-skip-browser-warning": '69420',
       // Add any other headers as needed
     },
