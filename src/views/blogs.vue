@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import BreadCrumbs from "../components/atoms/BreadCrumbs.vue";
 import OurBlogs from "../components/molecules/OurBlogs.vue";
+import { STRINGS } from "../shared/constants";
 import { ROUTE_CONSTANTS } from "../shared/route";
 import { onMounted, ref } from "vue";
 const breadCrumb = ref<any>()
@@ -20,8 +21,8 @@ onMounted(() => {
 
 });
 const breadcrumbs = [
-  { label: 'Saharsh Software', link: ROUTE_CONSTANTS.HOME },
-  { label: 'Blogs', link: ROUTE_CONSTANTS.BLOG },
+  { label: STRINGS.SAHARSH_SOFTWARE, link: ROUTE_CONSTANTS.HOME },
+  { label: STRINGS.BLOGS , link: ROUTE_CONSTANTS.BLOG },
 ];
 </script>
 <template>

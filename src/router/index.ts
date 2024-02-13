@@ -53,6 +53,16 @@ const router = createRouter({
       component: () => import("../views/projectModuleDetails.vue"),
       props: (route) => ({ id: route.params.id }),
     },
+    {
+      path: ROUTE_CONSTANTS.PRODUCT_ENGINEERING,
+      name: "project-engineering",
+      component: () => import("../views/productEngineering.vue"),
+    },
+    {
+      path: ROUTE_CONSTANTS.STAFF_AUGMENTATION,
+      name: "staff-augmentation",
+      component: () => import("../views/staffAugmentation.vue"),
+    },
   ],
 });
 

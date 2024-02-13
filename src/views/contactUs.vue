@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import BreadCrumbs from "../components/atoms/BreadCrumbs.vue";
 import ContactForm from "../components/atoms/ContactForm.vue";
+import { STRINGS } from "../shared/constants";
 import { ROUTE_CONSTANTS } from "../shared/route";
 import { onMounted, ref } from "vue";
 const breadCrumb = ref<any>()
@@ -20,8 +21,8 @@ onMounted(() => {
 
 });
 const breadcrumbs = [
-  { label: 'Saharsh Software', link: ROUTE_CONSTANTS.HOME },
-  { label: 'Contact us', link: ROUTE_CONSTANTS.CONTACT_US },
+  { label: STRINGS.SAHARSH_SOFTWARE, link: ROUTE_CONSTANTS.HOME },
+  { label: STRINGS.CONTACT_US, link: ROUTE_CONSTANTS.CONTACT_US },
 ];
 </script>
 <template>

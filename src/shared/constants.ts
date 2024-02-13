@@ -16,7 +16,11 @@ export const STRINGS = {
   HOME_TAG_LINE: "We create software that revolves around you where innovation meets user delight.",
   HOME_SUB_P1: 'With over 12 years of experience working with various technologies and domains, our consultancy firm was founded to provide exceptional services.',
   HOME_SUB_P2: 'We specialize in helping our clients visualize their product ideas and strive to write clean, easy-to-maintain code that will stand the test of time.',
-  PROJECTS: "Projects"
+  PROJECTS: "Projects",
+  OUR_OFFERINGS: "Our Offerings",
+  LEARN_MORE: "Learn more",
+  PRODUCT_ENGINEERINGS: "Product Engineering",
+  STAFF_AUGMENTATION: "Staff Augmentation"
 }
 
 export const NAV_LINK = [

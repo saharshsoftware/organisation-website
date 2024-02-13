@@ -13,6 +13,7 @@ import TrustedPartner from "../components/molecules/TrustedPartner.vue";
 import HeroSectionSlot from "../components/atoms/HeroSectionSlot.vue";
 import Testimonial from "../components/molecules/Testimonial.vue";
 import HomeSubSection from "../components/atoms/HomeSubSection.vue";
+import OurOfferings from "../components/molecules/OurOfferings.vue";
 
 const { data:heroSectionData } = useQuery({
   queryKey: ["hero-section"],
@@ -62,9 +63,10 @@ onMounted(() => {
     </div>
   </HeroSectionSlot>
   <TrustedPartner />
-  <Testimonial />
-  <JoinTeam />
   <WhyChoose />
+  <OurOfferings />
+  <JoinTeam />
+  <Testimonial />
   <OurBlogs :isLandingPage="true" />
 </template>
 

@@ -12,5 +12,8 @@ export const API = {
   // PROJECT_IMAGE: "/api/project-image",
   PROJECT_IMAGE: "/api/organisation-projects",
   CONTACT_US: "/api/contact-us",
-  PARENT_PROJECTS: "/api/parent-projects"
+  PARENT_PROJECTS: "/api/parent-projects",
+  STAFF_SEGMENTATION: "/api/staff-augmentation",
+  RPOJECT_ENGINEERING: "/api/product-engineering",
+  OUR_OFFERINGS: "/api/our-offering"
 }
