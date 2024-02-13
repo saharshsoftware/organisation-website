@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/vue-query";
 import MarkdownIt from "markdown-it";
 
 // sercices
-import { getParentProjectDetail } from "../services/projectImages";
+import { getParentProjectDetail, getParentProjectImagesRequest } from "../services/projectImages";
 import { ROUTE_CONSTANTS } from "../shared/route";
 
 // components
@@ -15,6 +15,11 @@ import { useRoute, useRouter } from "vue-router";
 
 const router = useRouter();
 const route = useRoute();
+const slugId = ref(null);
+const breadcrumbs = ref([
+  { label: "Saharsh Software", link: ROUTE_CONSTANTS.HOME },
+  { label: "Projects", link: ROUTE_CONSTANTS.PROJECTS },
+]);
 
 const renderMarkdown = (markdown: any) => {
   const md = new MarkdownIt({
@@ -24,29 +29,42 @@ const renderMarkdown = (markdown: any) => {
   return md.render(markdown);
 };
 
-const { data: projectModules, isLoading } = useQuery({
+const { data: projectModules, isLoading, refetch } = useQuery({
   queryKey: ["project_modules"],
   queryFn: async () => {
     const res = await getParentProjectDetail({
       params: { populate: "*" },
-      id: route.params.id,
+      id: slugId.value,
     });
     if (res) {
+      console.log(res, ":ASDf")
       breadcrumbs.value.push({
         label: res?.data?.attributes?.label ?? "",
-        link: ROUTE_CONSTANTS.PROJECT_MODULES + "/" + res?.data?.id,
+        link: ROUTE_CONSTANTS.PROJECT_MODULES + "/" + res?.data?.attributes?.slug,
       });
     }
     return res;
   },
-  enabled: !!route.params.id,
+  enabled: false,
 });
 
+const {data} = useQuery({
+  queryKey: ["parent_projects"],
+  queryFn: async () =>{
+    const res = await getParentProjectImagesRequest({
+      params: { populate: "*" },
+    })
+    if (res) {
+      const slugData = res?.data?.find((item:any) => item?.attributes?.slug === route?.params?.id)
+      slugId.value = slugData?.id
+      refetch()
+    }
+    return res
+  },
+});
+
+console.log(data)
 const el = ref(null);
-const breadcrumbs = ref([
-  { label: "Saharsh Software", link: ROUTE_CONSTANTS.HOME },
-  { label: "Projects", link: ROUTE_CONSTANTS.PROJECTS },
-]);
 
 const formattedProjectModules = computed(() => {
   return projectModules.value?.data ?? {};
@@ -58,8 +76,9 @@ function openLink(url: string) {
 
 const onProjectClick = (data: any) => {
   const { id } = data;
+  const {slug} = data?.attributes
   console.log(data, id);
-  router.push(ROUTE_CONSTANTS.PROJECT_MODULE_DETAIL + "/" + id);
+  router.push(ROUTE_CONSTANTS.PROJECT_MODULE_DETAIL + "/" + slug);
 };
 
 onBeforeUnmount(() => {

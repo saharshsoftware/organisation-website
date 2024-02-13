@@ -55,8 +55,9 @@ const breadcrumbs = [
 
 const onProjectClick = (data: any) => {
   const { id } = data;
+  const {slug} = data?.attributes
   console.log(data, id)
-  router.push(ROUTE_CONSTANTS.PROJECT_MODULES + "/" + id);
+  router.push(ROUTE_CONSTANTS.PROJECT_MODULES + "/" + slug);
 };
 </script>
 <template>
