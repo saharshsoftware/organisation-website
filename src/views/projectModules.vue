@@ -4,14 +4,17 @@ import { useQuery } from "@tanstack/vue-query";
 import MarkdownIt from "markdown-it";
 
 // sercices
-import { getParentProjectDetail, getParentProjectImagesRequest } from "../services/projectImages";
+import {
+  getParentProjectDetail,
+  getParentProjectImagesRequest,
+} from "../services/projectImages";
 import { ROUTE_CONSTANTS } from "../shared/route";
 
 // components
 import BreadCrumbs from "../components/atoms/BreadCrumbs.vue";
 import Loader from "../components/atoms/Loader.vue";
-import CustomTable from "../components/atoms/CustomTable.vue";
 import { useRoute, useRouter } from "vue-router";
+import ProjectModuleCard from "../components/atoms/ProjectModuleCard.vue";
 
 const router = useRouter();
 const route = useRoute();
@@ -29,7 +32,11 @@ const renderMarkdown = (markdown: any) => {
   return md.render(markdown);
 };
 
-const { data: projectModules, isLoading, refetch } = useQuery({
+const {
+  data: projectModules,
+  isLoading,
+  refetch,
+} = useQuery({
   queryKey: ["project_modules"],
   queryFn: async () => {
     const res = await getParentProjectDetail({
@@ -37,10 +44,11 @@ const { data: projectModules, isLoading, refetch } = useQuery({
       id: slugId.value,
     });
     if (res) {
-      console.log(res, ":ASDf")
+      console.log(res, ":ASDf");
       breadcrumbs.value.push({
         label: res?.data?.attributes?.label ?? "",
-        link: ROUTE_CONSTANTS.PROJECT_MODULES + "/" + res?.data?.attributes?.slug,
+        link:
+          ROUTE_CONSTANTS.PROJECT_MODULES + "/" + res?.data?.attributes?.slug,
       });
     }
     return res;
@@ -48,36 +56,33 @@ const { data: projectModules, isLoading, refetch } = useQuery({
   enabled: false,
 });
 
-const {data} = useQuery({
+const { data } = useQuery({
   queryKey: ["parent_projects"],
-  queryFn: async () =>{
+  queryFn: async () => {
     const res = await getParentProjectImagesRequest({
       params: { populate: "*" },
-    })
+    });
     if (res) {
-      const slugData = res?.data?.find((item:any) => item?.attributes?.slug === route?.params?.id)
-      slugId.value = slugData?.id
-      refetch()
+      const slugData = res?.data?.find(
+        (item: any) => item?.attributes?.slug === route?.params?.id
+      );
+      slugId.value = slugData?.id;
+      refetch();
     }
-    return res
+    return res;
   },
 });
+console.log(data);
 
-console.log(data)
 const el = ref(null);
 
 const formattedProjectModules = computed(() => {
   return projectModules.value?.data ?? {};
 });
 
-function openLink(url: string) {
-  window.open(url, "_blank");
-}
 
 const onProjectClick = (data: any) => {
-  const { id } = data;
-  const {slug} = data?.attributes
-  console.log(data, id);
+  const { slug } = data;
   router.push(ROUTE_CONSTANTS.PROJECT_MODULE_DETAIL + "/" + slug);
 };
 
@@ -99,45 +104,25 @@ onBeforeUnmount(() => {
   </template>
   <template v-else>
     <section ref="el" class="flex flex-col common-padding gap-8 py-4">
-      <CustomTable
-        :tableHeader="['Modules', 'Tech Stack', 'Description', 'Link', 'Details']"
-        :tableData="
-          formattedProjectModules?.attributes?.organisation_projects?.data
-        "
-      >
-        <template v-slot:tbodyRow="{ row }">
-          <tr>
-            <td class="common-td ">{{ row.attributes?.project_name ?? "-" }}</td>
-            <td class="common-td">{{ row.attributes?.techstack ?? "-" }}</td>
-            <td class="common-td">
-              <template v-if="row.attributes?.project_desc">
-                <div
-                v-if="row.attributes?.project_desc"
-                class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"
-                v-html="renderMarkdown(row.attributes?.project_desc)"
-                ></div>
-              </template>
-              <template v-else>
-                -
-              </template>
+      <div
+        v-if="formattedProjectModules?.attributes?.desc"
+        class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"
+        v-html="renderMarkdown(formattedProjectModules?.attributes?.desc)"
+      ></div>
 
-            </td>
-            <template v-if="row?.attributes?.project_link">
-              <td
-                class="link link-primary common-td"
-                @click="() => openLink(row?.attributes?.project_link)"
-              >
-                <a class="link link-primary"> Link </a>
-              </td> </template
-            ><template v-else>
-              <td class="common-td">-</td>
-            </template>
-            <td class="common-td" @click="() => onProjectClick(row)">
-              <a class="link link-primary"> Read More </a>
-            </td>
-          </tr>
-        </template>
-      </CustomTable>
+      <div class="grid lg:grid-cols-3 gap-4 ">
+      <div
+        v-for="(data, index) in formattedProjectModules?.attributes
+          ?.organisation_projects?.data"
+        :key="index"
+        class="flex flex-col gap-4 border shadow-md p-4 rounded "
+      >
+        <ProjectModuleCard :data="data?.attributes" 
+          v-on:click-event="onProjectClick"
+        />
+      </div>
+  </div>
+     
     </section>
   </template>
 </template>

@@ -68,3 +68,7 @@ export const handleQueryResponse = (res: any) => {
     return res;
   }
 }
+
+export const openLink = (url: string) => {
+  window.open(url, "_blank");
+}
