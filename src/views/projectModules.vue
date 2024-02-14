@@ -12,9 +12,9 @@ import { ROUTE_CONSTANTS } from "../shared/route";
 
 // components
 import BreadCrumbs from "../components/atoms/BreadCrumbs.vue";
-import Loader from "../components/atoms/Loader.vue";
 import { useRoute, useRouter } from "vue-router";
 import ProjectModuleCard from "../components/atoms/ProjectModuleCard.vue";
+import RenderDataResponse from "../components/atoms/RenderDataResponse.vue";
 
 const router = useRouter();
 const route = useRoute();
@@ -80,7 +80,6 @@ const formattedProjectModules = computed(() => {
   return projectModules.value?.data ?? {};
 });
 
-
 const onProjectClick = (data: any) => {
   const { slug } = data;
   router.push(ROUTE_CONSTANTS.PROJECT_MODULE_DETAIL + "/" + slug);
@@ -99,32 +98,34 @@ onBeforeUnmount(() => {
       <BreadCrumbs :breadcrumbList="breadcrumbs" />
     </div>
   </section>
-  <template v-if="isLoading || !formattedProjectModules">
-    <Loader />
-  </template>
-  <template v-else>
-    <section ref="el" class="flex flex-col common-padding gap-8 py-4">
+
+  <section ref="el" class="flex flex-col common-padding gap-8 py-4">
+    <RenderDataResponse
+      :isLoading="isLoading"
+      :responseData="formattedProjectModules"
+    >
       <div
         v-if="formattedProjectModules?.attributes?.desc"
         class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"
         v-html="renderMarkdown(formattedProjectModules?.attributes?.desc)"
       ></div>
 
-      <div class="grid lg:grid-cols-3 gap-4 ">
-      <div
-        v-for="(data, index) in formattedProjectModules?.attributes
-          ?.organisation_projects?.data"
-        :key="index"
-        class="flex flex-col gap-4 border shadow-md p-4 rounded "
-      >
-        <ProjectModuleCard :data="data?.attributes" 
-          v-on:click-event="onProjectClick"
-        />
+      <div class="grid lg:grid-cols-3 gap-4">
+        <div
+          v-for="(data, index) in formattedProjectModules?.attributes
+            ?.organisation_projects?.data"
+          :key="index"
+          class="flex flex-col gap-4 border shadow-md p-4 rounded"
+        >
+          <ProjectModuleCard
+            :data="data?.attributes"
+            v-on:click-event="onProjectClick"
+          />
+        </div>
       </div>
-  </div>
-     
-    </section>
-  </template>
+    </RenderDataResponse>
+  </section>
+  =
 </template>
 
 <style scoped></style>

@@ -8,9 +8,9 @@ import { ROUTE_CONSTANTS } from "../shared/route";
 
 // components
 import BreadCrumbs from "../components/atoms/BreadCrumbs.vue";
-import Loader from "../components/atoms/Loader.vue";
 import { useRoute } from "vue-router";
 import DisplayProjectInfo from "../components/atoms/DisplayProjectInfo.vue";
+import RenderDataResponse from "../components/atoms/RenderDataResponse.vue";
 
 const route = useRoute();
 const slugId = ref(null);
@@ -81,14 +81,11 @@ const formattedProjectModules = computed(() => {
       <BreadCrumbs :breadcrumbList="breadcrumbs" />
     </div>
   </section>
-  <template v-if="isLoading || !formattedProjectModules">
-    <Loader />
-  </template>
-  <template v-else>
-    <section ref="el" class="flex flex-col common-padding gap-8 py-4">
+  <section ref="el" class="flex flex-col common-padding gap-8 py-4">
+    <RenderDataResponse :isLoading="isLoading" :responseData="formattedProjectModules">
       <DisplayProjectInfo :item="formattedProjectModules?.attributes" />
+    </RenderDataResponse>
     </section>
-  </template>
 </template>
 
 <style scoped></style>

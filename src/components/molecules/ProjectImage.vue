@@ -9,9 +9,9 @@ import { STRINGS } from "../../shared/constants";
 
 // components
 import BreadCrumbs from "../atoms/BreadCrumbs.vue";
-import Loader from "../atoms/Loader.vue";
 import CustomTable from "../atoms/CustomTable.vue";
 import { useRouter } from "vue-router";
+import RenderDataResponse from "../atoms/RenderDataResponse.vue";
 
 const router = useRouter();
 const { data: parentProjects, isLoading } = useQuery({
@@ -27,7 +27,6 @@ const formattedParentProject = computed(() => {
 });
 
 const el = ref(null);
-
 
 const breadCrumb = ref<any>();
 
@@ -55,8 +54,8 @@ const breadcrumbs = [
 
 const onProjectClick = (data: any) => {
   const { id } = data;
-  const {slug} = data?.attributes
-  console.log(data, id)
+  const { slug } = data?.attributes;
+  console.log(data, id);
   router.push(ROUTE_CONSTANTS.PROJECT_MODULES + "/" + slug);
 };
 </script>
@@ -67,12 +66,12 @@ const onProjectClick = (data: any) => {
       <BreadCrumbs :breadcrumbList="breadcrumbs" />
     </div>
   </section>
-  <template v-if="isLoading || !formattedParentProject">
-    <Loader />
-  </template>
-  <template v-else>
 
-    <section ref="el" class="flex flex-col common-padding gap-8 py-4">
+  <section ref="el" class="flex flex-col common-padding gap-8 py-4">
+    <RenderDataResponse
+      :isLoading="isLoading"
+      :responseData="formattedParentProject"
+    >
       <CustomTable
         :tableHeader="['Clients', 'Total Modules', 'Details']"
         :tableData="formattedParentProject"
@@ -80,15 +79,17 @@ const onProjectClick = (data: any) => {
         <template v-slot:tbodyRow="{ row }">
           <tr>
             <td class="common-td">{{ row.attributes?.label }}</td>
-            <td class="common-td">{{ row.attributes?.organisation_projects?.data?.length }}</td>
+            <td class="common-td">
+              {{ row.attributes?.organisation_projects?.data?.length }}
+            </td>
             <td class="common-td" @click="() => onProjectClick(row)">
               <a class="link link-primary"> Read More </a>
             </td>
           </tr>
         </template>
       </CustomTable>
-    </section>
-  </template>
+    </RenderDataResponse>
+  </section>
 </template>
 
 <style scoped></style>

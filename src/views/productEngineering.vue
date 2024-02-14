@@ -5,8 +5,8 @@ import { getProjectEngineeringData } from "../services/projectEngineering";
 import { STRINGS } from "../shared/constants";
 import { ROUTE_CONSTANTS } from "../shared/route";
 import { computed, onMounted, ref } from "vue";
-import Loader from "../components/atoms/Loader.vue";
 import MarkdownIt from "markdown-it";
+import RenderDataResponse from "../components/atoms/RenderDataResponse.vue";
 
 const breadCrumb = ref<any>();
 
@@ -61,18 +61,11 @@ const breadcrumbs = [
       <BreadCrumbs :breadcrumbList="breadcrumbs" />
     </div>
   </section>
-  <template v-if="isLoading || !formattedData">
-      <div class="w-full">
-        <Loader />
-      </div>
-    </template>
-    <template v-else>
-      <section ref="el" class="flex flex-col common-padding gap-8 py-4">
-        <div
-          class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class"
-          v-html="renderMarkdown(formattedData?.content)"
-        ></div>
-      </section>
-    </template>
+  <section ref="el" class="flex flex-col common-padding gap-8 py-4">
+    <RenderDataResponse :isLoading="isLoading" :responseData="formattedData">
+      <div class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class"
+        v-html="renderMarkdown(formattedData?.content)"></div>
+    </RenderDataResponse>
+  </section>
 </template>
 <style scoped></style>

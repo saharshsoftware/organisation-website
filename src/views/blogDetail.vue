@@ -4,10 +4,10 @@ import { useQuery } from "@tanstack/vue-query";
 import { getBlogs } from "../services/blogs";
 import { ROUTE_CONSTANTS } from "../shared/route";
 import BreadCrumbs from "../components/atoms/BreadCrumbs.vue";
-import Loader from "../components/atoms/Loader.vue";
 import { IMAGES } from "../shared/images";
 import { ref, computed } from "vue";
-import MarkdownIt from 'markdown-it';
+import MarkdownIt from "markdown-it";
+import RenderDataResponse from "../components/atoms/RenderDataResponse.vue";
 
 const renderMarkdown = (markdown: any) => {
   const md = new MarkdownIt({
@@ -31,10 +31,11 @@ const breadcrumbs = ref([
 ]);
 
 const formattedBlogDetails = computed(() => {
-  const blogDetaildata = blogsData.value?.data?.find((item: any) => item?.attributes?.slug === route.params?.id)
+  const blogDetaildata = blogsData.value?.data?.find(
+    (item: any) => item?.attributes?.slug === route.params?.id
+  );
   return blogDetaildata?.attributes ?? {};
 });
-
 </script>
 
 <template>
@@ -44,21 +45,19 @@ const formattedBlogDetails = computed(() => {
       <BreadCrumbs :breadcrumbList="breadcrumbs" />
     </div>
   </section>
-  <div
-      class="flex flex-col gap-4 items-start justify-start relative common-padding lg:w-3/5 py-6 mx-auto "
+  <section
+    class="flex flex-col gap-4 items-start justify-start relative common-padding lg:w-3/5 py-6 mx-auto"
+  >
+    <RenderDataResponse
+      :isLoading="isLoading"
+      :responseData="formattedBlogDetails"
     >
-  <template v-if="isLoading || !formattedBlogDetails">
-    <div class="w-full">
-      <Loader />
-    </div>
-  </template>
-  <template v-else>
       <div
         class="text-[#0a102d] text-left text-4xl relative self-stretch font-normal"
       >
         {{ formattedBlogDetails?.title }}
       </div>
-      <em class=" w-full">
+      <em class="w-full">
         <img
           class="w-full h-full object-contain relative rounded-lg mx-auto"
           :src="
@@ -68,16 +67,12 @@ const formattedBlogDetails = computed(() => {
         />
       </em>
 
-        <div
-          class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"
-          v-html="renderMarkdown(formattedBlogDetails?.description)"
-        >
-      </div>
-       
-    </template>
-    </div>
+      <div
+        class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"
+        v-html="renderMarkdown(formattedBlogDetails?.description)"
+      ></div>
+    </RenderDataResponse>
+  </section>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
