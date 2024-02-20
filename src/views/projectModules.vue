@@ -40,7 +40,7 @@ const {
   queryKey: ["project_modules"],
   queryFn: async () => {
     const res = await getParentProjectDetail({
-      params: { populate: "*" },
+      params: { populate: "organisation_projects.image" },
       id: slugId.value,
     });
     if (res) {
@@ -115,7 +115,7 @@ onBeforeUnmount(() => {
           v-for="(data, index) in formattedProjectModules?.attributes
             ?.organisation_projects?.data"
           :key="index"
-          class="flex flex-col gap-4 border shadow-md p-4 rounded"
+          class="flex flex-col gap-4 border shadow-md p-2 rounded"
         >
           <ProjectModuleCard
             :data="data?.attributes"

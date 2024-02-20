@@ -9,9 +9,10 @@ import { STRINGS } from "../../shared/constants";
 
 // components
 import BreadCrumbs from "../atoms/BreadCrumbs.vue";
-import CustomTable from "../atoms/CustomTable.vue";
 import { useRouter } from "vue-router";
 import RenderDataResponse from "../atoms/RenderDataResponse.vue";
+import { IMAGES } from "../../shared/images";
+import ActionButton from "../atoms/ActionButton.vue";
 
 const router = useRouter();
 const { data: parentProjects, isLoading } = useQuery({
@@ -72,22 +73,41 @@ const onProjectClick = (data: any) => {
       :isLoading="isLoading"
       :responseData="formattedParentProject"
     >
-      <CustomTable
-        :tableHeader="['Clients', 'Total Modules', 'Details']"
-        :tableData="formattedParentProject"
-      >
-        <template v-slot:tbodyRow="{ row }">
-          <tr>
-            <td class="common-td">{{ row.attributes?.label }}</td>
-            <td class="common-td">
-              {{ row.attributes?.organisation_projects?.data?.length }}
-            </td>
-            <td class="common-td" @click="() => onProjectClick(row)">
-              <a class="link link-primary"> Read More </a>
-            </td>
-          </tr>
-        </template>
-      </CustomTable>
+      <div class="grid lg:grid-cols-3 gap-4">
+        <div
+          v-for="(data, index) in formattedParentProject"
+          :key="index"
+          class="flex flex-col gap-4 border shadow-md p-2 rounded"
+        >
+          <em class="h-1/2 w-full">
+            <img
+              class="w-full h-full bg-contain relative rounded-lg"
+              :src="
+                data?.attributes?.image?.data?.attributes?.url ??
+                IMAGES.imagePlaceholder
+              "
+            />
+          </em>
+          <div class="flex justify-between items-center gap-4">
+            <div class="text-2xl">
+              {{ data?.attributes?.label }}
+            </div>
+          </div>
+          <div class="flex flex-col gap-4 flex-1">
+            <div class="flex gap-2 italic">
+              <div class="font-bold">Total modules</div>
+              {{ data?.attributes?.organisation_projects?.data?.length }}
+            </div>
+            <div>
+              {{ data?.attributes?.desc }}
+            </div>
+          </div>
+          <ActionButton 
+            :button-label="'Read more'"
+            @click="() => onProjectClick(data)"
+          />
+        </div>
+      </div>
     </RenderDataResponse>
   </section>
 </template>

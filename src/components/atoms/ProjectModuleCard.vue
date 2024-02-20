@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { toRefs } from "vue";
 import { openLink } from "../../shared/utilies";
+import { IMAGES } from "../../shared/images";
+import ActionButton from "./ActionButton.vue";
 
 interface Props {
   data?: any;
@@ -16,6 +18,12 @@ const handleReadMoreClick = () => {
 </script>
 
 <template>
+  <em class="h-1/2 w-full">
+    <img
+      class="w-full h-full bg-contain relative rounded-lg"
+      :src="data?.image?.data?.attributes?.url ?? IMAGES.imagePlaceholder"
+    />
+  </em>
   <div class="flex justify-between items-center gap-4">
     <div class="text-2xl">
       {{ data?.project_name }}
@@ -34,10 +42,10 @@ const handleReadMoreClick = () => {
       {{ data?.techstack }}
     </div>
     <div>
-        {{ data?.short_desc }}
+      {{ data?.short_desc }}
     </div>
   </div>
-  <button class="btn" @click="handleReadMoreClick">Read more</button>
+  <ActionButton :button-label="'Read more'" @click="handleReadMoreClick" />
 </template>
 
 <style scoped></style>

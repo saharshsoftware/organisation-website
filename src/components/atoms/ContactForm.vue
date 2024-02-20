@@ -5,6 +5,7 @@ import { computed, reactive } from "vue";
 import InputComponent from "./InputComponent.vue";
 import { useMutation, useQuery } from "@tanstack/vue-query";
 import { createContactUserRequest, getContactUsMessageRequest } from "../../services/contactUser";
+import ActionButton from "./ActionButton.vue";
 
 const { data: contactMessage } = useQuery({
   queryKey: ["contact-us-message"],
@@ -47,6 +48,7 @@ const v$ = useVuelidate(rules, formData);
 
 const {
   mutate: mutateContactForm,
+  isPending
 } = useMutation({
   mutationFn: createContactUserRequest,
   onSuccess: async () => {
@@ -126,16 +128,7 @@ const addContactUser = async () => {
           <span v-if="v$?.message?.$error" class="text-error">{{ v$?.message?.$errors?.[0]?.$message }}</span>
         </div>
       </div>
-      <button
-        class=" cursor-pointer bg-primary-color rounded-[5px] border px-2 py-1 flex flex-col gap-0 items-center justify-center shrink-0 w-[120px] relative"
-      >
-        <div
-          class="text-[#ffffff] text-center text-sm leading-7 font-normal relative "
-          @click="addContactUser"
-        >
-          Submit
-        </div>
-      </button>
+      <ActionButton :isLoading="isPending" :button-label="'Submit'" @click="addContactUser" />
     </div>
   </div>
 </template>
