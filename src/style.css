@@ -1,4 +1,180 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-primary: #0a102d;
+  --color-secondary: #9561e2;
+  --color-success: #38a169;
+  --color-warning: #e37400;
+  --color-danger: #e3342f;
+  --link-color: #3c75f0;
+  /* Add more color variables as needed */
+
+  --color-banner-from: #c0222200;
+  --color-banner-to: #0a102d;
+  --logo-color: #3fabe6;
+}
+
+::-webkit-scrollbar {
+  width: 0.25px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.hero-section-bg {
+  background: linear-gradient(to right, #0a102d, #187b99eb);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #d2d2d2;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-family: "Inter-Regular", sans-serif;
+  position: relative;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+  outline: none;
+}
+
+.show_bg_2 {
+  @apply bg-[linear-gradient(to_right,var(--color-banner-to),var(--color-banner-from)),url('assets/images/digital-professional.jpg')] h-[400px] bg-cover text-[white] p-5;
+}
+
+.common-padding {
+  @apply md:px-24 px-6;
+}
+
+.my-card:hover {
+  transition: transform 1s;
+  transform: scale(1.1);
+  cursor: zoom-in;
+  background: radial-gradient(
+    200% 188% at top,
+    white 50%,
+    var(--color-primary) 50.1%
+  );
+}
+
+.heading {
+  padding-left: 0;
+  padding-right: 0;
+  line-height: 1.3;
+  cursor: pointer;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.heading::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  height: 0.2rem;
+  transition: width 0.5s ease-in-out;
+  width: 60%;
+  background: var(--logo-color);
+}
+
+/* .blog-json-class h5 {
+  @apply text-lg font-bold mb-4 text-error;
+} */
+
+.blog-json-class {
+  h1 {
+    @apply text-4xl ;
+  }
+
+  h2 {
+    @apply text-3xl ;
+  }
+
+  h3 {
+    @apply text-2xl ;
+  }
+
+  h4 {
+    @apply text-xl ;
+  }
+
+  h5 {
+    @apply text-lg ;
+  }
+
+  h6 {
+    @apply text-base ;
+  }
+
+  b,
+  strong {
+    @apply font-bold;
+  }
+
+  u {
+    @apply underline;
+  }
+
+  p a {
+    @apply text-[var(--link-color)] underline;
+  }
+
+  s {
+    @apply line-through;
+  }
+
+  ul {
+    @apply list-disc ml-4 ;
+  }
+
+  ol {
+    @apply list-decimal ml-4 ;
+  }
+
+  /* li {
+    @apply mb-2;
+  } */
+
+  pre {
+    @apply bg-[#f2f2f2] p-4 rounded-md ;
+  }
+
+  code {
+    @apply font-mono text-sm bg-[#f2f2f2] p-1 rounded-md;
+  }
+  p {
+    img {
+      margin-left: auto;
+      margin-right: auto;
+      object-fit: contain;
+    }
+  }
+  img {
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: contain;
+  }
+}
+
+.common-td {
+  @apply text-center p-4 min-w-48
+}

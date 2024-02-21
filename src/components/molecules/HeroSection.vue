@@ -3,7 +3,7 @@
   </script>
 <template>
     <section
-      class="bg-[#0a102d] md:px-24 px-6 md:py-36 py-9  relative"
+      class="bg-[#0a102d] common-padding md:py-36 py-9  relative"
     >
       <div
         class="flex flex-col gap-[33px] items-start justify-center "
@@ -12,7 +12,7 @@
           class="pr-[9px] pl-[9px] flex flex-row gap-2.5 items-center justify-center shrink-0 relative"
         >
           <div
-            class="text-[#ffffff] text-left font-['Montserrat-Regular',_sans-serif] text-[40px] leading-[45px] font-normal relative self-stretch flex-1"
+            class="text-[#ffffff] text-left font-['Montserrat-Regular',_sans-serif] text-3xl leading-10 font-normal relative self-stretch flex-1"
           >
             We design and engineer the most user centric software products
           </div>
@@ -73,7 +73,7 @@
 
     <!-- Trusted Section -->
         <section
-      class="pt-5 pr-3 pb-5 pl-3 flex lg:flex-row flex-col items-center justify-between relative gap-8"
+      class="p-6 flex lg:flex-row flex-col items-center justify-between relative gap-8"
     >
       <div
         class="text-[#040f56] text-left font-['Montserrat-Regular',_sans-serif] text-[22px] leading-[26.4px] font-normal relative w-[300px]"
