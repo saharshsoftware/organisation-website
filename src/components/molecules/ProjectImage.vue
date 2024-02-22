@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
 import { useQuery } from "@tanstack/vue-query";
+import MarkdownIt from "markdown-it";
 
 // sercices
 import { getParentProjectImagesRequest } from "../../services/projectImages";
@@ -31,6 +32,13 @@ const el = ref(null);
 
 const breadCrumb = ref<any>();
 
+const renderMarkdown = (markdown: any) => {
+  const md = new MarkdownIt({
+    html: true,
+    linkify: true,
+  });
+  return md.render(markdown);
+};
 onMounted(() => {
   const observer = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting) {
@@ -73,39 +81,42 @@ const onProjectClick = (data: any) => {
       :isLoading="isLoading"
       :responseData="formattedParentProject"
     >
-      <div class="grid lg:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 gap-4">
         <div
           v-for="(data, index) in formattedParentProject"
           :key="index"
-          class="flex flex-col gap-4 border shadow-md p-2 rounded"
+          class="grid grid-cols-12 gap-6 border shadow-md p-2 rounded"
         >
-          <em class="h-1/2 w-full max-h-60">
-            <img
-              class="w-full h-full bg-contain relative rounded-lg aspect-video"
-              :src="
-                data?.attributes?.image?.data?.attributes?.url ??
-                IMAGES.imagePlaceholder
-              "
-            />
-          </em>
-          <div class="flex justify-between items-center gap-4">
-            <div class="text-2xl">
-              {{ data?.attributes?.label }}
+          <div class="md:col-span-5 col-span-full">
+            <em class="h-1/2 w-full max-h-60">
+              <img
+                class="w-full h-full bg-contain relative rounded-lg aspect-video"
+                :src="
+                  data?.attributes?.image?.data?.attributes?.url ??
+                  IMAGES.imagePlaceholder
+                "
+              />
+            </em>
+          </div>
+          <div class="md:col-span-7 col-span-full">
+            <div class="flex flex-col gap-4 h-full min-h-72">
+              <div class="text-2xl">
+                {{ data?.attributes?.label }}
+              </div>
+              <div class="flex-1">
+                <div
+                  v-if="data?.attributes?.desc"
+                  class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"
+                  v-html="renderMarkdown(data?.attributes?.desc)"
+                ></div>
+              </div>
+              <ActionButton
+                :button-label="'Read more'"
+                @click="() => onProjectClick(data)"
+                :customClass="'max-w-fit'"
+              />
             </div>
           </div>
-          <div class="flex flex-col gap-4 flex-1">
-            <div class="flex gap-2 italic">
-              <div class="font-bold">Total modules</div>
-              {{ data?.attributes?.organisation_projects?.data?.length }}
-            </div>
-            <div>
-              {{ data?.attributes?.desc }}
-            </div>
-          </div>
-          <ActionButton 
-            :button-label="'Read more'"
-            @click="() => onProjectClick(data)"
-          />
         </div>
       </div>
     </RenderDataResponse>
