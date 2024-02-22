@@ -18,9 +18,9 @@ const handleReadMoreClick = () => {
 </script>
 
 <template>
-  <em class="h-1/2 w-full">
+  <em class="h-1/2 w-full max-h-60">
     <img
-      class="w-full h-full bg-contain relative rounded-lg"
+      class="w-full h-full bg-contain relative rounded-lg aspect-video"
       :src="data?.image?.data?.attributes?.url ?? IMAGES.imagePlaceholder"
     />
   </em>
