@@ -85,12 +85,12 @@ const onProjectClick = (data: any) => {
         <div
           v-for="(data, index) in formattedParentProject"
           :key="index"
-          class="grid grid-cols-12 gap-6 border shadow-md p-2 rounded"
+          class="flex flex-col items-start gap-6 border shadow-md p-2 rounded relative"
         >
-          <div class="md:col-span-5 col-span-full">
-            <em class="h-1/2 w-full max-h-60">
+          <div class="md:col-span-3 col-span-full ">
+            <em class="max-h-72">
               <img
-                class="w-full h-full bg-contain relative rounded-lg aspect-video"
+                class="w-full h-10 bg-contain relative rounded-lg aspect-video"
                 :src="
                   data?.attributes?.image?.data?.attributes?.url ??
                   IMAGES.imagePlaceholder
@@ -98,7 +98,7 @@ const onProjectClick = (data: any) => {
               />
             </em>
           </div>
-          <div class="md:col-span-7 col-span-full">
+          <div class="md:col-span-9 col-span-full">
             <div class="flex flex-col gap-4 h-full min-h-72">
               <div class="text-2xl">
                 {{ data?.attributes?.label }}
@@ -106,7 +106,7 @@ const onProjectClick = (data: any) => {
               <div class="flex-1">
                 <div
                   v-if="data?.attributes?.desc"
-                  class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"
+                  class="text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"
                   v-html="renderMarkdown(data?.attributes?.desc)"
                 ></div>
               </div>

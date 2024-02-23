@@ -63,7 +63,7 @@ const breadcrumbs = [
   </section>
   <section ref="el" class="flex flex-col common-padding gap-8 py-4">
     <RenderDataResponse :isLoading="isLoading" :responseData="formattedData">
-      <div class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class"
+      <div class="text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class"
         v-html="renderMarkdown(formattedData?.content)"></div>
     </RenderDataResponse>
   </section>
