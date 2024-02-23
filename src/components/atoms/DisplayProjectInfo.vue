@@ -56,11 +56,6 @@ const renderMarkdown = (markdown: any) => {
         </div>
       </div>
     </div>
-    <div
-      v-if="item?.short_desc"
-      class="text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"
-      v-html="renderMarkdown(item?.short_desc)"
-    ></div>
 
     <swiper
       :modules="modules"
