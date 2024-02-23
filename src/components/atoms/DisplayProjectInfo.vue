@@ -59,7 +59,7 @@ const renderMarkdown = (markdown: any) => {
     </div>
     <div
         v-if="item?.short_desc"
-        class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"
+        class="text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"
         v-html="renderMarkdown(item?.short_desc)"
       ></div>
     <div v-if="item?.techstack">
@@ -67,7 +67,7 @@ const renderMarkdown = (markdown: any) => {
     </div>
     <div
       v-if="item?.project_desc"
-      class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"
+      class="text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"
       v-html="renderMarkdown(item?.project_desc)"
     ></div>
     <swiper

@@ -75,12 +75,12 @@ const breadcrumbs = [
       :responseData="formattedAboutUsData"
     >
       <div
-        class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class"
+        class="text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class"
         v-html="renderMarkdown(formattedAboutUsData?.mision)"
       ></div>
 
       <div
-        class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class"
+        class="text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class"
         v-html="renderMarkdown(formattedAboutUsData?.vision)"
       ></div>
     </RenderDataResponse>
