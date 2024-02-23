@@ -94,16 +94,16 @@ onBeforeUnmount(() => {
 <template>
   <section class="common-padding py-9 relative bg-primary-color">
     <div class="text-white flex flex-col items-start justify-between gap-5">
-      <div class="flex flex-col justify-start items-start gap-4">
+      <div class="flex justify-start items-start gap-4">
+        <h2 class="text-3xl" ref="breadCrumb">
+          {{ formattedProjectModules?.attributes?.label }}
+        </h2>
         <em class="max-h-72">
           <img
             class="w-full h-10 bg-contain relative rounded-lg aspect-video"
             :src="imagelogoref?.data?.attributes?.url ?? ''"
           />
         </em>
-        <h2 class="text-3xl" ref="breadCrumb">
-          {{ formattedProjectModules?.attributes?.label }}
-        </h2>
       </div>
       <BreadCrumbs :breadcrumbList="breadcrumbs" />
     </div>
