@@ -19,6 +19,7 @@ import RenderDataResponse from "../components/atoms/RenderDataResponse.vue";
 const router = useRouter();
 const route = useRoute();
 const slugId = ref(null);
+const imagelogoref = ref<any>(null);
 const breadcrumbs = ref([
   { label: "Saharsh Software", link: ROUTE_CONSTANTS.HOME },
   { label: "Projects", link: ROUTE_CONSTANTS.PROJECTS },
@@ -66,6 +67,7 @@ const { data } = useQuery({
       const slugData = res?.data?.find(
         (item: any) => item?.attributes?.slug === route?.params?.id
       );
+      imagelogoref.value = slugData.attributes.image;
       slugId.value = slugData?.id;
       refetch();
     }
@@ -92,9 +94,17 @@ onBeforeUnmount(() => {
 <template>
   <section class="common-padding py-9 relative bg-primary-color">
     <div class="text-white flex flex-col items-start justify-between gap-5">
-      <h2 class="text-3xl" ref="breadCrumb">
-        {{ formattedProjectModules?.attributes?.label }}
-      </h2>
+      <div class="flex flex-col justify-start items-start gap-4">
+        <em class="max-h-72">
+          <img
+            class="w-full h-10 bg-contain relative rounded-lg aspect-video"
+            :src="imagelogoref?.data?.attributes?.url ?? ''"
+          />
+        </em>
+        <h2 class="text-3xl" ref="breadCrumb">
+          {{ formattedProjectModules?.attributes?.label }}
+        </h2>
+      </div>
       <BreadCrumbs :breadcrumbList="breadcrumbs" />
     </div>
   </section>
@@ -104,6 +114,7 @@ onBeforeUnmount(() => {
       :isLoading="isLoading"
       :responseData="formattedProjectModules"
     >
+      {{ console.log(imagelogoref) }}
       <div
         v-if="formattedProjectModules?.attributes?.desc"
         class="text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"
@@ -125,7 +136,6 @@ onBeforeUnmount(() => {
       </div>
     </RenderDataResponse>
   </section>
-  
 </template>
 
 <style scoped></style>
