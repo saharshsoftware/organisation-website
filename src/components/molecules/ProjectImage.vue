@@ -85,7 +85,7 @@ const onProjectClick = (data: any) => {
         <div
           v-for="(data, index) in formattedParentProject"
           :key="index"
-          class="flex flex-col items-start gap-6 border shadow-md p-2 rounded relative"
+          class="flex flex-col items-start gap-6 border shadow-md p-8 rounded relative"
         >
           <div class="md:col-span-3 col-span-full ">
             <em class="max-h-72">
