@@ -63,7 +63,7 @@ textarea:focus-visible {
 }
 
 .common-padding {
-  @apply md:px-16 px-6;
+  @apply md:px-40 px-6;
 }
 
 .my-card:hover {

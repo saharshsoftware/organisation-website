@@ -115,7 +115,7 @@ onBeforeUnmount(() => {
           v-for="(data, index) in formattedProjectModules?.attributes
             ?.organisation_projects?.data"
           :key="index"
-          class="flex flex-col gap-6 border shadow-md p-2 rounded"
+          class="flex flex-col gap-6 border shadow-md p-8 rounded"
         >
           <ProjectModuleCard
             :data="data?.attributes"
