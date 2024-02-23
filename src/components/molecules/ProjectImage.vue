@@ -20,7 +20,7 @@ const { data: parentProjects, isLoading } = useQuery({
   queryKey: ["parent_projects"],
   queryFn: () =>
     getParentProjectImagesRequest({
-      params: { populate: "*" },
+      params: { populate: "*", 'sort[0]':"sort"},
     }),
 });
 
