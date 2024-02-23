@@ -20,7 +20,7 @@ const { data: parentProjects, isLoading } = useQuery({
   queryKey: ["parent_projects"],
   queryFn: () =>
     getParentProjectImagesRequest({
-      params: { populate: "*" },
+      params: { populate: "*", 'sort[0]':"sort"},
     }),
 });
 
@@ -105,9 +105,9 @@ const onProjectClick = (data: any) => {
               </div>
               <div class="flex-1">
                 <div
-                  v-if="data?.attributes?.desc"
+                  v-if="data?.attributes?.short_desc"
                   class="text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"
-                  v-html="renderMarkdown(data?.attributes?.desc)"
+                  v-html="renderMarkdown(data?.attributes?.short_desc)"
                 ></div>
               </div>
               <ActionButton

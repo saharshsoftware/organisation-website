@@ -63,7 +63,7 @@ textarea:focus-visible {
 }
 
 .common-padding {
-  @apply md:px-24 px-6;
+  @apply md:px-16 px-6;
 }
 
 .my-card:hover {
@@ -135,9 +135,9 @@ textarea:focus-visible {
     @apply underline;
   }
 
-  /* p a {
+  p a {
     @apply text-[var(--link-color)] underline;
-  } */
+  }
 
   s {
     @apply line-through;

@@ -28,7 +28,6 @@ const renderMarkdown = (markdown: any) => {
   });
   return md.render(markdown);
 };
-
 </script>
 <template>
   <template v-if="item?.project_name">
@@ -58,18 +57,11 @@ const renderMarkdown = (markdown: any) => {
       </div>
     </div>
     <div
-        v-if="item?.short_desc"
-        class="text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"
-        v-html="renderMarkdown(item?.short_desc)"
-      ></div>
-    <div v-if="item?.techstack">
-      <strong>Tech Stack:</strong> {{ item?.techstack ?? "-" }}
-    </div>
-    <div
-      v-if="item?.project_desc"
+      v-if="item?.short_desc"
       class="text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"
-      v-html="renderMarkdown(item?.project_desc)"
+      v-html="renderMarkdown(item?.short_desc)"
     ></div>
+
     <swiper
       :modules="modules"
       :loop="true"
@@ -98,6 +90,11 @@ const renderMarkdown = (markdown: any) => {
         </div>
       </swiper-slide>
     </swiper>
+    <div
+      v-if="item?.long_desc"
+      class="text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"
+      v-html="renderMarkdown(item?.long_desc)"
+    ></div>
   </template>
   <template v-else>
     <Loader />
