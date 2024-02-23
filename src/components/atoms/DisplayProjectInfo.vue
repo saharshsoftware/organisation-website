@@ -57,6 +57,11 @@ const renderMarkdown = (markdown: any) => {
         </div>
       </div>
     </div>
+    <div
+        v-if="item?.short_desc"
+        class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"
+        v-html="renderMarkdown(item?.short_desc)"
+      ></div>
     <div v-if="item?.techstack">
       <strong>Tech Stack:</strong> {{ item?.techstack ?? "-" }}
     </div>

@@ -144,7 +144,7 @@ const formattedFooterData = computed(() => {
       <div
         class="text-white text-center text-sm leading-[25.6px] font-normal relative"
       >
-        Saharash Technologies
+        Saharsh software LLP
       </div>
       <div
         class="text-[#7a7a7a] text-center text-sm leading-[25.6px] font-normal relative"

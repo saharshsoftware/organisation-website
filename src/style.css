@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: #0a102d;
+  --color-primary: #2E2F36;
   --color-secondary: #9561e2;
   --color-success: #38a169;
   --color-warning: #e37400;
@@ -16,6 +16,7 @@
   --color-banner-from: #c0222200;
   --color-banner-to: #0a102d;
   --logo-color: #3fabe6;
+  --button-hover-color: #2e2f36b0;
 }
 
 ::-webkit-scrollbar {
@@ -177,4 +178,8 @@ textarea:focus-visible {
 
 .common-td {
   @apply text-center p-4 min-w-48
+}
+
+.btn:hover {
+  @apply bg-[var(--button-hover-color)]
 }

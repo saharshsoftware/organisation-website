@@ -110,12 +110,12 @@ onBeforeUnmount(() => {
         v-html="renderMarkdown(formattedProjectModules?.attributes?.desc)"
       ></div>
 
-      <div class="grid lg:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 gap-4">
         <div
           v-for="(data, index) in formattedProjectModules?.attributes
             ?.organisation_projects?.data"
           :key="index"
-          class="flex flex-col gap-4 border shadow-md p-2 rounded"
+          class="grid grid-cols-12 gap-6 border shadow-md p-2 rounded"
         >
           <ProjectModuleCard
             :data="data?.attributes"
@@ -125,7 +125,7 @@ onBeforeUnmount(() => {
       </div>
     </RenderDataResponse>
   </section>
-  =
+  
 </template>
 
 <style scoped></style>
