@@ -98,7 +98,7 @@ onBeforeUnmount(() => {
         <h2 class="text-3xl" ref="breadCrumb">
           {{ formattedProjectModules?.attributes?.label }}
         </h2>
-        <em class="max-h-72">
+        <em class="max-h-72" v-if="!!imagelogoref?.data?.attributes?.url">
           <img
             class="w-full h-10 bg-contain relative rounded-lg aspect-video"
             :src="imagelogoref?.data?.attributes?.url ?? ''"
