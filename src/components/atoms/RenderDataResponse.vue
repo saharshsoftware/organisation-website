@@ -5,14 +5,15 @@ import Loader from "./Loader.vue";
 interface Props {
   isLoading?: boolean;
   responseData?: any;
+  skeltonType?: string;
 }
 const props = defineProps<Props>();
-const { isLoading, responseData } = toRefs(props);
+const { isLoading, responseData, skeltonType } = toRefs(props);
 </script>
 <template>
   <template v-if="isLoading || !responseData">
     <div class="w-full">
-      <Loader />
+      <Loader :skelton-type="skeltonType ?? ''"/>
     </div>
   </template>
   <template v-else>

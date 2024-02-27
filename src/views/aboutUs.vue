@@ -2,7 +2,7 @@
 import BreadCrumbs from "../components/atoms/BreadCrumbs.vue";
 import { useResizeObserver } from "@vueuse/core";
 import { ROUTE_CONSTANTS } from "../shared/route";
-import { STRINGS } from "../shared/constants";
+import { SKELTON_TYPE, STRINGS } from "../shared/constants";
 import MarkdownIt from "markdown-it";
 import { computed, onMounted, ref } from "vue";
 import { useQuery } from "@tanstack/vue-query";
@@ -71,8 +71,9 @@ const breadcrumbs = [
 
   <section ref="el" class="flex flex-col common-padding gap-8 py-4">
     <RenderDataResponse
-      :isLoading="isLoading"
+      :isLoading="isLoading || !formattedAboutUsData"
       :responseData="formattedAboutUsData"
+      :skelton-type="SKELTON_TYPE.BLOG_DETAIL"
     >
       <div
         class="text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class"
