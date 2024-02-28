@@ -112,7 +112,7 @@ onBeforeUnmount(() => {
 
   <section ref="el" class="flex flex-col common-padding gap-8 py-4">
     <RenderDataResponse
-      :isLoading="isLoading"
+      :isLoading="isLoading || !formattedProjectModules?.attributes"
       :responseData="formattedProjectModules"
       :skelton-type="SKELTON_TYPE.PROJECT_MODULE"
     >
