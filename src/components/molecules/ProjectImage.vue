@@ -6,7 +6,7 @@ import MarkdownIt from "markdown-it";
 // sercices
 import { getParentProjectImagesRequest } from "../../services/projectImages";
 import { ROUTE_CONSTANTS } from "../../shared/route";
-import { STRINGS } from "../../shared/constants";
+import { SKELTON_TYPE, STRINGS } from "../../shared/constants";
 
 // components
 import BreadCrumbs from "../atoms/BreadCrumbs.vue";
@@ -78,8 +78,9 @@ const onProjectClick = (data: any) => {
 
   <section ref="el" class="flex flex-col common-padding gap-8 py-4">
     <RenderDataResponse
-      :isLoading="isLoading"
+      :isLoading="isLoading || !formattedParentProject"
       :responseData="formattedParentProject"
+      :skelton-type="SKELTON_TYPE.PROJECT_CARD"
     >
       <div class="grid grid-cols-1 gap-4">
         <div

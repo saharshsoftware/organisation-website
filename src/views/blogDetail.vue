@@ -8,6 +8,7 @@ import { IMAGES } from "../shared/images";
 import { ref, computed } from "vue";
 import MarkdownIt from "markdown-it";
 import RenderDataResponse from "../components/atoms/RenderDataResponse.vue";
+import { SKELTON_TYPE } from "../shared/constants";
 
 const renderMarkdown = (markdown: any) => {
   const md = new MarkdownIt({
@@ -49,8 +50,9 @@ const formattedBlogDetails = computed(() => {
     class="flex flex-col gap-4 items-start justify-start relative common-padding lg:w-3/5 py-6 mx-auto"
   >
     <RenderDataResponse
-      :isLoading="isLoading"
+      :isLoading="isLoading || !formattedBlogDetails"
       :responseData="formattedBlogDetails"
+      :skelton-type="SKELTON_TYPE.BLOG_DETAIL"
     >
       <div
         class="text-[#0a102d] text-left text-4xl relative self-stretch font-normal"

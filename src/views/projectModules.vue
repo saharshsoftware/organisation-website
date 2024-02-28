@@ -15,6 +15,7 @@ import BreadCrumbs from "../components/atoms/BreadCrumbs.vue";
 import { useRoute, useRouter } from "vue-router";
 import ProjectModuleCard from "../components/atoms/ProjectModuleCard.vue";
 import RenderDataResponse from "../components/atoms/RenderDataResponse.vue";
+import { SKELTON_TYPE } from "../shared/constants";
 
 const router = useRouter();
 const route = useRoute();
@@ -98,7 +99,7 @@ onBeforeUnmount(() => {
         <h2 class="text-3xl" ref="breadCrumb">
           {{ formattedProjectModules?.attributes?.label }}
         </h2>
-        <em class="max-h-72">
+        <em class="max-h-72" v-if="!!imagelogoref?.data?.attributes?.url">
           <img
             class="w-full h-10 bg-contain relative rounded-lg aspect-video"
             :src="imagelogoref?.data?.attributes?.url ?? ''"
@@ -113,8 +114,8 @@ onBeforeUnmount(() => {
     <RenderDataResponse
       :isLoading="isLoading"
       :responseData="formattedProjectModules"
+      :skelton-type="SKELTON_TYPE.PROJECT_MODULE"
     >
-      {{ console.log(imagelogoref) }}
       <div
         v-if="formattedProjectModules?.attributes?.desc"
         class="text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class flex flex-col gap-4"

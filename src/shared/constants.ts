@@ -65,3 +65,10 @@ export const BLOG_DATA = [
    image: IMAGES.lappy
   },
 ]
+
+export const SKELTON_TYPE = {
+  PROJECT_CARD: "project_card",
+  PROJECT_MODULE: "project_module",
+  PROJECT_MODULE_DETAIL: "project_module_detail",
+  BLOG_DETAIL: "blog_detail"
+}

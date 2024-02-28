@@ -20,7 +20,7 @@ const { data } = toRefs(props);
 const readMoreLimit = ref<number>(75);
 </script>
 <template>
-  <em class="h-3/5 w-full">
+  <em class="h-1/2 w-full">
     <img
       class="w-full h-full bg-contain relative rounded-lg"
       :src="
@@ -31,7 +31,7 @@ const readMoreLimit = ref<number>(75);
   </em>
   <div class="py-1 px-2 flex-1">
     <div
-      class="text-[#0a102d] text-left text-2xl relative self-stretch font-normal"
+      class="text-[#0a102d] text-left text-2xl relative self-stretch font-normal line-clamp-3"
     >
       {{
         data?.attributes?.title?.length > readMoreLimit
@@ -40,7 +40,7 @@ const readMoreLimit = ref<number>(75);
       }}
     </div>
     <div
-      class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch"
+      class="text-[#6e6e6e] text-left text-base leading-[30px] font-normal relative self-stretch line-clamp-3"
       v-html="renderMarkdown(data?.attributes?.description)"
     ></div>
   </div>
