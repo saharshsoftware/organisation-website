@@ -3,6 +3,7 @@ import { toRefs } from "vue";
 
 // shareds
 import { IMAGES } from "../../shared/images"
+import { sanitizeStrapiImageUrl } from "../../shared/utilies";
 
 interface Props {
   author: string,
@@ -37,7 +38,7 @@ const { author, content, image_url } = toRefs(props);
         <figcaption class="mt-6 flex items-center justify-center space-x-3">
           <img
             class="h-6 w-6 rounded-full"
-            :src="image_url ?? IMAGES.imagePlaceholder"
+            :src="sanitizeStrapiImageUrl(image_url) ?? IMAGES.imagePlaceholder"
             alt="profile picture"
           />
           <div class="flex items-center divide-x-2 divide-gray-500">

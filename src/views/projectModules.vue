@@ -16,6 +16,7 @@ import { useRoute, useRouter } from "vue-router";
 import ProjectModuleCard from "../components/atoms/ProjectModuleCard.vue";
 import RenderDataResponse from "../components/atoms/RenderDataResponse.vue";
 import { SKELTON_TYPE } from "../shared/constants";
+import { sanitizeStrapiImageUrl } from "../shared/utilies";
 
 const router = useRouter();
 const route = useRoute();
@@ -102,7 +103,7 @@ onBeforeUnmount(() => {
         <em class="max-h-72" v-if="!!imagelogoref?.data?.attributes?.url">
           <img
             class="w-full h-10 bg-contain relative rounded-lg aspect-video"
-            :src="imagelogoref?.data?.attributes?.url ?? ''"
+            :src="sanitizeStrapiImageUrl(imagelogoref?.data?.attributes?.url) ?? ''"
           />
         </em>
       </div>

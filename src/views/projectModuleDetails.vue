@@ -66,8 +66,10 @@ const { data } = useQuery({
         (item: any) => item?.attributes?.slug === route?.params?.id
       );
       console.log(slugData);
-      slugId.value = slugData?.id;
-      refetch();
+      if (slugData) {
+        slugId.value = slugData?.id;
+        refetch();
+      }
     }
     return res;
   },

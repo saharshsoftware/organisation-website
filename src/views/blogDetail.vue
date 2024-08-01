@@ -9,6 +9,7 @@ import { ref, computed } from "vue";
 import MarkdownIt from "markdown-it";
 import RenderDataResponse from "../components/atoms/RenderDataResponse.vue";
 import { SKELTON_TYPE } from "../shared/constants";
+import { sanitizeStrapiImageUrl } from "../shared/utilies";
 
 const renderMarkdown = (markdown: any) => {
   const md = new MarkdownIt({
@@ -63,7 +64,7 @@ const formattedBlogDetails = computed(() => {
         <img
           class="w-full h-full object-contain relative rounded-lg mx-auto"
           :src="
-            formattedBlogDetails?.image?.data?.attributes?.url ??
+            sanitizeStrapiImageUrl(formattedBlogDetails?.image?.data?.attributes?.url) ??
             IMAGES.imagePlaceholder
           "
         />

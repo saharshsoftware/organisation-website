@@ -11,6 +11,7 @@ import {
 import { useQuery } from "@tanstack/vue-query";
 import { getFooterRequest } from "../../services/footer";
 import { IMAGES } from "../../shared/images";
+import { sanitizeStrapiImageUrl } from "../../shared/utilies";
 
 const { data } = useQuery({
   queryKey: ["footer"],
@@ -32,7 +33,7 @@ const formattedFooterData = computed(() => {
       <div
         class="flex flex-col gap-2.5 items-start justify-start self-stretch flex-1 relative"
       >
-        <img class="shrink-0 w-[180.32px] h-[52px] relative" v-if="formattedFooterData.logo_url?.data?.attributes?.url" :src="formattedFooterData.logo_url?.data?.attributes?.url ?? IMAGES.imagePlaceholder" />
+        <img class="shrink-0 w-[180.32px] h-[52px] relative" v-if="formattedFooterData.logo_url?.data?.attributes?.url" :src="sanitizeStrapiImageUrl(formattedFooterData.logo_url?.data?.attributes?.url) ?? IMAGES.imagePlaceholder" />
         <div
           class="text-[#6e6e6e] text-left text-[15px] leading-6 font-normal relative self-stretch"
         >

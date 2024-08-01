@@ -6,6 +6,7 @@ import { ref, computed } from "vue";
 import { useQuery } from "@tanstack/vue-query";
 import { getNavbarRequest } from "../../services/navbar";
 import { IMAGES } from "../../shared/images";
+import { sanitizeStrapiImageUrl } from "../../shared/utilies";
 
 const { data } = useQuery({
   queryKey: ["navbar"],
@@ -35,7 +36,7 @@ const closetoggle = () => {
       v-if="formattedTrustedPartnerData.logo_url?.data"
     >
       <RouterLink class="cursor-pointer" to="/" @click="closetoggle">
-        <img class="shrink-0 h-[46px] relative" :src="formattedTrustedPartnerData.logo_url?.data?.attributes?.url ?? IMAGES.imagePlaceholder" alt="image-add" />
+        <img class="shrink-0 h-[46px] relative" :src="sanitizeStrapiImageUrl(formattedTrustedPartnerData.logo_url?.data?.attributes?.url) ?? IMAGES.imagePlaceholder" alt="image-add" />
       </RouterLink>
       <div
         class="lg:flex flex-row gap-8 items-start justify-start shrink-0 relative hidden"

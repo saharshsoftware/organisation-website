@@ -6,6 +6,7 @@ import { faRightLong } from "@fortawesome/free-solid-svg-icons";
 import { useQuery } from "@tanstack/vue-query";
 import { getOurOfferings } from "../../services/ourOfferings";
 import Loader from "../atoms/Loader.vue";
+import { sanitizeStrapiImageUrl } from "../../shared/utilies";
 
 const router = useRouter();
 const trustedSection = ref<any>();
@@ -52,7 +53,7 @@ const moveTo = (data: any) => {
           >
             <img
               class="inset-0 object-cover w-full min-h-80 group-hover:opacity-50"
-              :src="item?.image?.data?.attributes.url"
+              :src="sanitizeStrapiImageUrl(item?.image?.data?.attributes.url)??''"
             />
             <div class="common-padding common-info-section">
               <div class="font-bold text-2xl">{{ item.title }}</div>

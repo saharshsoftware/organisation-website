@@ -1,3 +1,5 @@
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 // Reusable IntersectionObserver function
 export const setupIntersectionObserver = (element: HTMLElement, callback: () => void) => {
   const observer = new IntersectionObserver((entries) => {
@@ -72,3 +74,13 @@ export const handleQueryResponse = (res: any) => {
 export const openLink = (url: string) => {
   window.open(url, "_blank");
 }
+
+
+export const sanitizeStrapiImageUrl = (item: any) => {
+  const imagelink = item;
+  // console.log(item, "resultimagebank");
+  const result = imagelink
+    ? `${API_BASE_URL}${imagelink}`
+    : null;
+  return result;
+};

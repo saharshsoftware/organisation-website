@@ -77,7 +77,7 @@ const breadcrumbs = [
     >
       <div
         class="text-left text-base leading-[30px] font-normal relative self-stretch blog-json-class"
-        v-html="renderMarkdown(formattedAboutUsData?.mision)"
+        v-html="renderMarkdown(formattedAboutUsData?.mission)"
       ></div>
 
       <div
