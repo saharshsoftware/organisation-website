@@ -2,6 +2,7 @@
 import { toRefs, ref } from "vue";
 import { IMAGES } from "../../shared/images";
 import MarkdownIt from "markdown-it";
+import { sanitizeStrapiImageUrl } from "../../shared/utilies";
 
 interface Props {
   data?: any;
@@ -24,7 +25,7 @@ const readMoreLimit = ref<number>(75);
     <img
       class="w-full h-full bg-contain relative rounded-lg"
       :src="
-        data?.attributes?.image?.data?.attributes?.url ??
+        sanitizeStrapiImageUrl(data?.attributes?.image?.data?.attributes?.url) ??
         IMAGES.imagePlaceholder
       "
     />

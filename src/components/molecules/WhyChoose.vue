@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/vue-query";
 import { getWhyChooseRequest } from "../../services/whychooseus";
 import { IMAGES } from "../../shared/images";
 import Loader from "../atoms/Loader.vue";
+import { sanitizeStrapiImageUrl } from "../../shared/utilies";
 
 const whyChooseSection = ref<any>();
 
@@ -82,7 +83,7 @@ onMounted(() => {
             <img
               class="h-24 w-24 relative rounded-lg"
               :src="
-                item?.image?.data?.attributes?.url ?? IMAGES.imagePlaceholder
+                sanitizeStrapiImageUrl(item?.image?.data?.attributes?.url) ?? IMAGES.imagePlaceholder
               "
             />
           </em>

@@ -14,6 +14,7 @@ import { useRouter } from "vue-router";
 import RenderDataResponse from "../atoms/RenderDataResponse.vue";
 import { IMAGES } from "../../shared/images";
 import ActionButton from "../atoms/ActionButton.vue";
+import { sanitizeStrapiImageUrl } from "../../shared/utilies";
 
 const router = useRouter();
 const { data: parentProjects, isLoading } = useQuery({
@@ -93,7 +94,7 @@ const onProjectClick = (data: any) => {
               <img
                 class="w-full h-10 bg-contain relative rounded-lg aspect-video"
                 :src="
-                  data?.attributes?.image?.data?.attributes?.url ??
+                  sanitizeStrapiImageUrl(data?.attributes?.image?.data?.attributes?.url) ??
                   IMAGES.imagePlaceholder
                 "
               />

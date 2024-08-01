@@ -4,6 +4,7 @@ const trustedSection = ref<any>();
 
 import { useQuery } from "@tanstack/vue-query";
 import { getTrustedPartnerRequest } from "../../services/trustedPartner";
+import { sanitizeStrapiImageUrl } from "../../shared/utilies";
 
 const { data } = useQuery({
   queryKey: ["trusted-partner"],
@@ -32,7 +33,7 @@ const formattedTrustedPartnerData = computed(() => {
         v-for="(imageData, index) in formattedTrustedPartnerData?.image"
         :key="index"
         class="w-25 h-10 relative"
-        :src="imageData?.url?.data?.attributes?.url"
+        :src="sanitizeStrapiImageUrl(imageData?.url?.data?.attributes?.url) ?? ''"
         alt="partner_image"
       />
     </div>
