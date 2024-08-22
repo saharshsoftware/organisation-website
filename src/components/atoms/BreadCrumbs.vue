@@ -15,7 +15,7 @@ const breadcrumbList = toRef(props.breadcrumbList);
 
 </script>
 <template>
-  <div class=" w-full overflow-x-scroll">
+  <div class=" w-full sm:overflow-auto overflow-x-scroll">
     <div class="text-sm breadcrumbs break-all" >
       <ul v-if="breadcrumbList">
         <li v-for="(item, index) in breadcrumbList" :key="index">

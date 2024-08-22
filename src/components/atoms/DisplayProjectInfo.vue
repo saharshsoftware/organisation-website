@@ -9,7 +9,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/bundle";
 import Loader from "./Loader.vue";
-import { openLink } from "../../shared/utilies";
+import { openLink, sanitizeStrapiImageUrl } from "../../shared/utilies";
 
 interface Props {
   item: any;
@@ -79,7 +79,7 @@ const renderMarkdown = (markdown: any) => {
             <img
               class="bg-contain mx-auto border border-[#e3e3e3] shadow-md max-h-[60vh]"
               alt="profile picture "
-              :src="p_image.attributes.url"
+              :src="sanitizeStrapiImageUrl(p_image.attributes.url) ?? ''"
             />
           </figure>
         </div>
